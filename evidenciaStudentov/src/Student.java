@@ -13,11 +13,13 @@ public class Student {
     private final String osobneCislo;
     private final String meno;
     private final String priezvisko;
+    private String cisloSkupiny;
 
     public Student(String osobneCislo, String meno, String priezvisko) {
         this.osobneCislo = osobneCislo;
         this.meno = meno;
         this.priezvisko = priezvisko;
+        this.cisloSkupiny = null;
     }
 
     public String getOsobneCislo() {
@@ -35,5 +37,13 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" + "osobneCislo=" + this.osobneCislo + ", meno=" + this.meno + ", priezvisko=" + this.priezvisko + '}';
+    }
+
+    String getCisloSkupiny() {
+        return this.cisloSkupiny;
+    }
+
+    void nastavSkupinu(Skupina skupina) {
+        this.cisloSkupiny = skupina.getCislo();
     }
 }

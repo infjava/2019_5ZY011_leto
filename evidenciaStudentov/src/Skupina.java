@@ -27,6 +27,7 @@ public class Skupina {
 
     void pridajStudenta(Student novy) {
         this.zoznamStudentov.add(novy);
+        novy.nastavSkupinu(this);
     }
 
     void vypisStudentov() {
