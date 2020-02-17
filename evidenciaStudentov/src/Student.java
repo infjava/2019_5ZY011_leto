@@ -34,6 +34,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "osobneCislo=" + osobneCislo + ", meno=" + meno + ", priezvisko=" + priezvisko + '}';
+        return "Student{" + "osobneCislo=" + this.osobneCislo + ", meno=" + this.meno + ", priezvisko=" + this.priezvisko + '}';
     }
 }
