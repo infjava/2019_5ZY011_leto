@@ -15,7 +15,7 @@ public class EvidenciaStudentov {
      */
     public static void main(String[] args) {
         Student novy = new Student("1001120", "Jan", "Janech");
-        System.out.println(novy.getMeno());
+        System.out.println(novy);
     }
     
 }
