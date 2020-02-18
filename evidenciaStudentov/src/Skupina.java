@@ -44,5 +44,9 @@ public class Skupina {
         }
         return null;
     }
+
+    void odstranStudenta(Student student) {
+        this.zoznamStudentov.remove(student);
+    }
     
 }

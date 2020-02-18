@@ -43,4 +43,20 @@ public class StudentTest {
         
         Assert.assertSame(ziskany, s);
     }
+    
+    @Test
+    public void presunStudentaDoSkupiny() {
+        Student s = new Student("123", "Ferko", "Mrkvicka");
+        Skupina skup = new Skupina("5");
+        skup.pridajStudenta(s);
+        
+        Assert.assertEquals("5", s.getCisloSkupiny());
+        
+        Skupina skup10 = new Skupina("10");
+        skup10.pridajStudenta(s);
+        
+        Assert.assertEquals("10", s.getCisloSkupiny());
+        Assert.assertSame(s, skup10.getStudent("123"));
+        Assert.assertNull(skup.getStudent("123"));
+    }
 }

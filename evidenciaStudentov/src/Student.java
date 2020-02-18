@@ -13,13 +13,13 @@ public class Student {
     private final String osobneCislo;
     private final String meno;
     private final String priezvisko;
-    private String cisloSkupiny;
+    private Skupina skupina;
 
     public Student(String osobneCislo, String meno, String priezvisko) {
         this.osobneCislo = osobneCislo;
         this.meno = meno;
         this.priezvisko = priezvisko;
-        this.cisloSkupiny = null;
+        this.skupina = null;
     }
 
     public String getOsobneCislo() {
@@ -40,10 +40,17 @@ public class Student {
     }
 
     String getCisloSkupiny() {
-        return this.cisloSkupiny;
+        if (this.skupina != null) {
+            return this.skupina.getCislo();
+        } else {
+            return null;
+        }
     }
 
     void nastavSkupinu(Skupina skupina) {
-        this.cisloSkupiny = skupina.getCislo();
+        if (this.skupina != null) {
+            this.skupina.odstranStudenta(this);
+        }
+        this.skupina = skupina;
     }
 }
