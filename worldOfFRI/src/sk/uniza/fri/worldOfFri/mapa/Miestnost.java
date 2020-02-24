@@ -1,5 +1,5 @@
+package sk.uniza.fri.worldOfFri.mapa;
 
-import java.util.HashMap;
 import java.util.TreeMap;
 
 /**
@@ -57,7 +57,7 @@ public class Miestnost {
         return this.popisMiestnosti;
     }
 
-    Miestnost getVychod(String smer) {
+    public Miestnost getVychod(String smer) {
         return this.vychody.get(smer);
     }
 }
