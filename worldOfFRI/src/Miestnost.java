@@ -11,11 +11,11 @@
  * @version 2012.02.21
  */
 public class Miestnost {
-    public String popisMiestnosti;
-    public Miestnost severnyVychod;
-    public Miestnost juznyVychod;
-    public Miestnost vychodnyVychod;
-    public Miestnost zapadnyVychod;
+    private String popisMiestnosti;
+    private Miestnost severnyVychod;
+    private Miestnost juznyVychod;
+    private Miestnost vychodnyVychod;
+    private Miestnost zapadnyVychod;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -75,5 +75,20 @@ public class Miestnost {
      */
     public String getPopis() {
         return this.popisMiestnosti;
+    }
+
+    Miestnost getVychod(String smer) {
+        switch (smer) {
+            case "sever":
+                return this.severnyVychod;
+            case "vychod":
+                return this.vychodnyVychod;
+            case "juh":
+                return this.juznyVychod;
+            case "zapad":
+                return this.zapadnyVychod;
+            default:
+                return null;
+        }
     }
 }

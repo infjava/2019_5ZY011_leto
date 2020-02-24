@@ -142,21 +142,7 @@ public class Hra  {
         String smer = prikaz.getParameter();
 
         // Pokus o opustenie aktualnej miestnosti danym vychodom.
-        Miestnost novaMiestnost = null;
-        switch (smer) {
-            case "sever":
-                novaMiestnost = this.aktualnaMiestnost.severnyVychod;
-                break;
-            case "vychod":
-                novaMiestnost = this.aktualnaMiestnost.vychodnyVychod;
-                break;
-            case "juh":
-                novaMiestnost = this.aktualnaMiestnost.juznyVychod;
-                break;
-            case "zapad":
-                novaMiestnost = this.aktualnaMiestnost.zapadnyVychod;
-                break;
-        }
+        Miestnost novaMiestnost = this.aktualnaMiestnost.getVychod(smer);
 
         if (novaMiestnost == null) {
             System.out.println("Tam nie je vychod!");
