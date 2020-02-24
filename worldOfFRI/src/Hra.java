@@ -81,21 +81,7 @@ public class Hra  {
         System.out.println("World of FRI je nova, neuveritelne nudna adventura.");
         System.out.println("Zadaj 'pomoc' ak potrebujes pomoc.");
         System.out.println();
-        System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
-        System.out.print("Vychody: ");
-        if (this.aktualnaMiestnost.severnyVychod != null) {
-            System.out.print("sever ");
-        }
-        if (this.aktualnaMiestnost.vychodnyVychod != null) {
-            System.out.print("vychod ");
-        }
-        if (this.aktualnaMiestnost.juznyVychod != null) {
-            System.out.print("juh ");
-        }
-        if (this.aktualnaMiestnost.zapadnyVychod != null) {
-            System.out.print("zapad ");
-        }
-        System.out.println();
+        this.aktualnaMiestnost.vypisInfo();
     }
 
     /**
@@ -176,21 +162,7 @@ public class Hra  {
             System.out.println("Tam nie je vychod!");
         } else {
             this.aktualnaMiestnost = novaMiestnost;
-            System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
-            System.out.print("Vychody: ");
-            if (this.aktualnaMiestnost.severnyVychod != null) {
-                System.out.print("sever ");
-            }
-            if (this.aktualnaMiestnost.vychodnyVychod != null) {
-                System.out.print("vychod ");
-            }
-            if (this.aktualnaMiestnost.juznyVychod != null) {
-                System.out.print("juh ");
-            }
-            if (this.aktualnaMiestnost.zapadnyVychod != null) {
-                System.out.print("zapad ");
-            }
-            System.out.println();
+            this.aktualnaMiestnost.vypisInfo();
         }
     }
 

@@ -27,6 +27,24 @@ public class Miestnost {
     public Miestnost(String popis) {
         this.popisMiestnosti = popis;
     }
+    
+    public void vypisInfo() {
+        System.out.println("Teraz si v miestnosti " + this.getPopis());
+        System.out.print("Vychody: ");
+        if (this.severnyVychod != null) {
+            System.out.print("sever ");
+        }
+        if (this.vychodnyVychod != null) {
+            System.out.print("vychod ");
+        }
+        if (this.juznyVychod != null) {
+            System.out.print("juh ");
+        }
+        if (this.zapadnyVychod != null) {
+            System.out.print("zapad ");
+        }
+        System.out.println();
+    }
 
     /**
      * Nastavi vychody z miestnosti. Kazdy vychod je urceny bud odkazom 
