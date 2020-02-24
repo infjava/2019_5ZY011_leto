@@ -37,27 +37,27 @@ public class MiestnostTest {
     @Test
     public void nemaVychody() {
         Assert.assertEquals("nema vychody", this.nemaVychody.getPopis());
-        Assert.assertNull(this.nemaVychody.vychodnyVychod);
-        Assert.assertNull(this.nemaVychody.zapadnyVychod);
-        Assert.assertNull(this.nemaVychody.severnyVychod);
-        Assert.assertNull(this.nemaVychody.juznyVychod);
+        Assert.assertNull(this.nemaVychody.getVychod("vychod"));
+        Assert.assertNull(this.nemaVychody.getVychod("zapad"));
+        Assert.assertNull(this.nemaVychody.getVychod("sever"));
+        Assert.assertNull(this.nemaVychody.getVychod("juh"));
     }
 
     @Test
     public void sever() {
         Assert.assertEquals("sever", this.sever.getPopis());
-        Assert.assertSame(this.vychod, this.sever.vychodnyVychod);
-        Assert.assertSame(this.zapad, this.sever.zapadnyVychod);
-        Assert.assertNull(this.sever.severnyVychod);
-        Assert.assertSame(this.juh, this.sever.juznyVychod);
+        Assert.assertSame(this.vychod, this.sever.getVychod("vychod"));
+        Assert.assertSame(this.zapad, this.sever.getVychod("zapad"));
+        Assert.assertNull(this.sever.getVychod("sever"));
+        Assert.assertSame(this.juh, this.sever.getVychod("juh"));
     }
 
     @Test
     public void juh() {
         Assert.assertEquals("juh", this.juh.getPopis());
-        Assert.assertSame(this.vychod, this.juh.vychodnyVychod);
-        Assert.assertSame(this.zapad, this.juh.zapadnyVychod);
-        Assert.assertSame(this.sever, this.juh.severnyVychod);
-        Assert.assertNull(this.juh.juznyVychod);
+        Assert.assertSame(this.vychod, this.juh.getVychod("vychod"));
+        Assert.assertSame(this.zapad, this.juh.getVychod("zapad"));
+        Assert.assertSame(this.sever, this.juh.getVychod("sever"));
+        Assert.assertNull(this.juh.getVychod("juh"));
     }
 }
