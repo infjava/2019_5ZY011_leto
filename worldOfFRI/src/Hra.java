@@ -42,11 +42,14 @@ public class Hra  {
         Miestnost kancelaria = new Miestnost("kancelaria spravcu pocitacoveho laboratoria");
         
         // inicializacia miestnosti = nastavenie vychodov
-        terasa.nastavVychody(null, aula, labak, bufet);
-        aula.nastavVychody(null, null, null, terasa);
-        bufet.nastavVychody(null, terasa, null, null);
-        labak.nastavVychody(terasa, kancelaria, null, null);
-        kancelaria.nastavVychody(null, null, null, labak);
+        terasa.nastavVychod("vychod", aula);
+        terasa.nastavVychod("juh", aula);
+        terasa.nastavVychod("zapad", bufet);
+        aula.nastavVychod("zapad", terasa);
+        bufet.nastavVychod("vychod", terasa);
+        labak.nastavVychod("sever", terasa);
+        labak.nastavVychod("vychod", kancelaria);
+        kancelaria.nastavVychod("zapad", labak);
 
         this.aktualnaMiestnost = terasa;  // startovacia miestnost hry
     }

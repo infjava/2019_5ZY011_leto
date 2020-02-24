@@ -23,15 +23,22 @@ public class MiestnostTest {
     @Before
     public void setUp() {
         this.nemaVychody = new Miestnost("nema vychody");
-        this.nemaVychody.nastavVychody(null, null, null, null);
         this.zapad = new Miestnost("zapad");
         this.vychod = new Miestnost("vychod");
         this.sever = new Miestnost("sever");
         this.juh = new Miestnost("juh");
-        this.zapad.nastavVychody(this.sever, this.vychod, this.juh, null);
-        this.vychod.nastavVychody(this.sever, null, this.juh, this.zapad);
-        this.sever.nastavVychody(null, this.vychod, this.juh, this.zapad);
-        this.juh.nastavVychody(this.sever, this.vychod, null, this.zapad);
+        this.zapad.nastavVychod("sever", this.sever);
+        this.zapad.nastavVychod("vychod", this.vychod);
+        this.zapad.nastavVychod("juh", this.juh);
+        this.vychod.nastavVychod("sever", this.sever);
+        this.vychod.nastavVychod("juh", this.juh);
+        this.vychod.nastavVychod("zapad", this.zapad);
+        this.sever.nastavVychod("vychod", this.vychod);
+        this.sever.nastavVychod("juh", this.juh);
+        this.sever.nastavVychod("zapad", this.zapad);
+        this.juh.nastavVychod("sever", this.sever);
+        this.juh.nastavVychod("vychod", this.vychod);
+        this.juh.nastavVychod("zapad", this.zapad);
     }
 
     @Test
