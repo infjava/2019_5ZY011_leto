@@ -6,7 +6,7 @@ package sk.uniza.fri.worldOfFri.tests;
  * and open the template in the editor.
  */
 
-import sk.uniza.fri.worldOfFri.prikazy.NazvyPrikazov;
+import sk.uniza.fri.worldOfFri.prikazy.Prikazy;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
@@ -17,11 +17,11 @@ import org.junit.Assert;
  */
 public class NazvyPrikazovTest {
 
-    private NazvyPrikazov nazvyPri1;
+    private Prikazy nazvyPri1;
 
     @Before
     public void setUp() {
-        this.nazvyPri1 = new NazvyPrikazov();
+        this.nazvyPri1 = new Prikazy();
     }
 
     @Test

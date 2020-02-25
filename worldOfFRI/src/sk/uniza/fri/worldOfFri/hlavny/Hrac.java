@@ -22,7 +22,7 @@ public class Hrac {
         return this.aktualnaMiestnost;
     }
 
-    boolean chodDanymSmerom(String smer) {
+    public boolean chodDanymSmerom(String smer) {
         Miestnost novaMiestnost = this.aktualnaMiestnost.getVychod(smer);
 
         if (novaMiestnost == null) {
