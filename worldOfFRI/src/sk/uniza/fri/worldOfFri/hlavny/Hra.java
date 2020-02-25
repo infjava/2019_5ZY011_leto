@@ -1,8 +1,8 @@
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.prikazy.Parser;
 import sk.uniza.fri.worldOfFri.prikazy.Prikaz;
-import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 
 /**
  * Trieda Hra je hlavna trieda aplikacie "World of FRI".
@@ -27,38 +27,15 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 public class Hra  {
     private Parser parser;
     private final Hrac hrac;
+    private final Budova budova;
     
     /**
      * Vytvori a inicializuje hru.
      */
     public Hra() {
-        Miestnost startovacia = this.vytvorMiestnosti();
+        this.budova = new Budova();
         this.parser = new Parser();
-        this.hrac = new Hrac(startovacia);
-    }
-
-    /**
-     * Vytvori mapu hry - miestnosti.
-     */
-    private Miestnost vytvorMiestnosti() {
-        // vytvorenie miestnosti
-        Miestnost terasa = new Miestnost("terasa - hlavny vstup na fakultu");
-        Miestnost aula = new Miestnost("aula");
-        Miestnost bufet = new Miestnost("bufet");
-        Miestnost labak = new Miestnost("pocitacove laboratorium");
-        Miestnost kancelaria = new Miestnost("kancelaria spravcu pocitacoveho laboratoria");
-        
-        // inicializacia miestnosti = nastavenie vychodov
-        terasa.nastavVychod("vychod", aula);
-        terasa.nastavVychod("juh", aula);
-        terasa.nastavVychod("zapad", bufet);
-        aula.nastavVychod("zapad", terasa);
-        bufet.nastavVychod("vychod", terasa);
-        labak.nastavVychod("sever", terasa);
-        labak.nastavVychod("vychod", kancelaria);
-        kancelaria.nastavVychod("zapad", labak);
-
-        return terasa;  // startovacia miestnost hry
+        this.hrac = new Hrac(this.budova.getStartovaciaMiestnost());
     }
 
     /**
