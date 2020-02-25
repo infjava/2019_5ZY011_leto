@@ -26,20 +26,21 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
  
 public class Hra  {
     private Parser parser;
-    private Miestnost aktualnaMiestnost;
+    private final Hrac hrac;
     
     /**
      * Vytvori a inicializuje hru.
      */
     public Hra() {
-        this.vytvorMiestnosti();
+        Miestnost startovacia = this.vytvorMiestnosti();
         this.parser = new Parser();
+        this.hrac = new Hrac(startovacia);
     }
 
     /**
      * Vytvori mapu hry - miestnosti.
      */
-    private void vytvorMiestnosti() {
+    private Miestnost vytvorMiestnosti() {
         // vytvorenie miestnosti
         Miestnost terasa = new Miestnost("terasa - hlavny vstup na fakultu");
         Miestnost aula = new Miestnost("aula");
@@ -57,7 +58,7 @@ public class Hra  {
         labak.nastavVychod("vychod", kancelaria);
         kancelaria.nastavVychod("zapad", labak);
 
-        this.aktualnaMiestnost = terasa;  // startovacia miestnost hry
+        return terasa;  // startovacia miestnost hry
     }
 
     /**
@@ -90,7 +91,7 @@ public class Hra  {
         System.out.println("World of FRI je nova, neuveritelne nudna adventura.");
         System.out.println("Zadaj 'pomoc' ak potrebujes pomoc.");
         System.out.println();
-        this.aktualnaMiestnost.vypisInfo();
+        this.hrac.getAktualnaMiestnost().vypisInfo();
     }
 
     /**
@@ -149,15 +150,11 @@ public class Hra  {
         }
 
         String smer = prikaz.getParameter();
-
-        // Pokus o opustenie aktualnej miestnosti danym vychodom.
-        Miestnost novaMiestnost = this.aktualnaMiestnost.getVychod(smer);
-
-        if (novaMiestnost == null) {
-            System.out.println("Tam nie je vychod!");
+        
+        if (this.hrac.chodDanymSmerom(smer)) {
+            this.hrac.getAktualnaMiestnost().vypisInfo();
         } else {
-            this.aktualnaMiestnost = novaMiestnost;
-            this.aktualnaMiestnost.vypisInfo();
+            System.out.println("Tam nie je vychod!");
         }
     }
 
