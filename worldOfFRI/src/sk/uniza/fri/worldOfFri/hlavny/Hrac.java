@@ -43,5 +43,16 @@ public class Hrac {
         this.inventar.put(nazovPredmetu, predmet);
         return true;
     }
+
+    public void vypisInventar() {
+        if (this.inventar.isEmpty()) {
+            System.out.println("Inventar je prazdny");
+        } else {
+            System.out.println("V inventari mas:");
+            for (String nazov : this.inventar.keySet()) {
+                System.out.format("- %s%n", nazov);
+            }
+        }
+    }
     
 }
