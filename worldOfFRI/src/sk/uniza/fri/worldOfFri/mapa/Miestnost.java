@@ -1,6 +1,6 @@
 package sk.uniza.fri.worldOfFri.mapa;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.TreeMap;
 
 /**
@@ -18,7 +18,7 @@ import java.util.TreeMap;
 public class Miestnost {
     private String popisMiestnosti;
     private TreeMap<String, Miestnost> vychody;
-    private final ArrayList<Predmet> predmety;
+    private final HashMap<String, Predmet> predmety;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
@@ -30,7 +30,7 @@ public class Miestnost {
     public Miestnost(String popis) {
         this.popisMiestnosti = popis;
         this.vychody = new TreeMap<String, Miestnost>();
-        this.predmety = new ArrayList<Predmet>();
+        this.predmety = new HashMap<String, Predmet>();
     }
     
     public void vypisInfo() {
@@ -65,7 +65,7 @@ public class Miestnost {
     }
 
     void polozPredmet(Predmet predmet) {
-        this.predmety.add(predmet);
+        this.predmety.put(predmet.getNazov(), predmet);
     }
 
     public void vypisPrehliadku() {
@@ -73,20 +73,13 @@ public class Miestnost {
             System.out.println("Nist som nenasiel");
         } else {
             System.out.println("Nasiel som:");
-            for (Predmet predmet : this.predmety) {
-                System.out.format("- %s%n", predmet.getNazov());
+            for (String nazov : this.predmety.keySet()) {
+                System.out.format("- %s%n", nazov);
             }
         }
     }
 
     public Predmet zoberPredmet(String nazovPredmetu) {
-        for (Predmet predmet : this.predmety) {
-            if (predmet.getNazov().equals(nazovPredmetu)) {
-                this.predmety.remove(predmet);
-                return predmet;
-            }
-        }
-        
-        return null;
+        return this.predmety.remove(nazovPredmetu);
     }
 }
