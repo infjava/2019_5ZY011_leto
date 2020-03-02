@@ -32,6 +32,8 @@ public class Budova {
         vratnica.nastavVychod("sever", chodbaA);
         vratnica.nastavVychod("juh", chodbickaB);
         
+        vratnica.polozPredmet(new Predmet("isic"));
+        
         chodbickaB.nastavVychod("sever", vratnica);
         chodbickaB.nastavVychod("juh", chodbaB);
         

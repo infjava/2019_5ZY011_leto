@@ -27,7 +27,9 @@ Predmety
 - akcie:
   - pouzitie
   - uschovanie
+    > zober isic
   - zahodenie
+    > zahod isic
 Inventar
 Spelly
 - dekodovanie pomocou notebooku
