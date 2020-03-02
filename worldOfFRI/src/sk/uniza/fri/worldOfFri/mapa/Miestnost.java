@@ -69,9 +69,13 @@ public class Miestnost {
     }
 
     public void vypisPrehliadku() {
-        System.out.println("Nasiel som:");
-        for (Predmet predmet : this.predmety) {
-            System.out.format("- %s%n", predmet.getNazov());
+        if (this.predmety.isEmpty()) {
+            System.out.println("Nist som nenasiel");
+        } else {
+            System.out.println("Nasiel som:");
+            for (Predmet predmet : this.predmety) {
+                System.out.format("- %s%n", predmet.getNazov());
+            }
         }
     }
 }
