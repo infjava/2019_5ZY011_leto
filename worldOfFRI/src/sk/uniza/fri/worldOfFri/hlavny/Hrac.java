@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import java.util.HashMap;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 import sk.uniza.fri.worldOfFri.mapa.Predmet;
 
@@ -14,9 +15,11 @@ import sk.uniza.fri.worldOfFri.mapa.Predmet;
  */
 public class Hrac {
     private Miestnost aktualnaMiestnost;
+    private final HashMap<String, Predmet> inventar;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
+        this.inventar = new HashMap<String, Predmet>();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -36,6 +39,8 @@ public class Hrac {
 
     public boolean zoberPredmet(String nazovPredmetu) {
         Predmet predmet = this.aktualnaMiestnost.zoberPredmet(nazovPredmetu);
+        
+        this.inventar.put(nazovPredmetu, predmet);
         return true;
     }
     
