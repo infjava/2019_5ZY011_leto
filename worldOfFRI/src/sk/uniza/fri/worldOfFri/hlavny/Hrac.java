@@ -40,6 +40,10 @@ public class Hrac {
     public boolean zoberPredmet(String nazovPredmetu) {
         Predmet predmet = this.aktualnaMiestnost.zoberPredmet(nazovPredmetu);
         
+        if (predmet == null) {
+            return false;
+        }
+        
         this.inventar.put(nazovPredmetu, predmet);
         return true;
     }
