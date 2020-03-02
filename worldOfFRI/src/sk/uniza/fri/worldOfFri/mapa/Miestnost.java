@@ -78,4 +78,15 @@ public class Miestnost {
             }
         }
     }
+
+    public Predmet zoberPredmet(String nazovPredmetu) {
+        for (Predmet predmet : this.predmety) {
+            if (predmet.getNazov().equals(nazovPredmetu)) {
+                this.predmety.remove(predmet);
+                return predmet;
+            }
+        }
+        
+        return null;
+    }
 }

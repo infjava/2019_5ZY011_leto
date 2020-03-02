@@ -6,6 +6,7 @@
 package sk.uniza.fri.worldOfFri.hlavny;
 
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
+import sk.uniza.fri.worldOfFri.mapa.Predmet;
 
 /**
  *
@@ -30,6 +31,11 @@ public class Hrac {
         }
         
         this.aktualnaMiestnost = novaMiestnost;
+        return true;
+    }
+
+    public boolean zoberPredmet(String nazovPredmetu) {
+        Predmet predmet = this.aktualnaMiestnost.zoberPredmet(nazovPredmetu);
         return true;
     }
     

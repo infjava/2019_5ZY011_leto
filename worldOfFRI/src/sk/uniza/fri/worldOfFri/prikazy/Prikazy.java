@@ -15,7 +15,7 @@ import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
-        "chod", "ukonci", "pomoc", "hladaj"
+        "chod", "ukonci", "pomoc", "hladaj", "zober"
     };
 
     /**
@@ -62,6 +62,9 @@ public class Prikazy {
                 return this.ukonciHru(prikaz);
             case "hladaj":
                 this.prehladajMiestnost(hrac);
+                return false;
+            case "zober":
+                this.zoberPredmet(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -121,5 +124,12 @@ public class Prikazy {
 
     private void prehladajMiestnost(Hrac hrac) {
         hrac.getAktualnaMiestnost().vypisPrehliadku();
+    }
+
+    private void zoberPredmet(Hrac hrac, Prikaz prikaz) {
+        String nazovPredmetu = prikaz.getParameter();
+        if (!hrac.zoberPredmet(nazovPredmetu)) {
+            System.out.format("Nenasiel som %s!%n", nazovPredmetu);
+        }
     }
 }
