@@ -67,4 +67,11 @@ public class Miestnost {
     void polozPredmet(Predmet predmet) {
         this.predmety.add(predmet);
     }
+
+    public void vypisPrehliadku() {
+        System.out.println("Nasiel som:");
+        for (Predmet predmet : this.predmety) {
+            System.out.format("- %s%n", predmet.getNazov());
+        }
+    }
 }
