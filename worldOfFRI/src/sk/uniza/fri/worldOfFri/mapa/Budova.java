@@ -28,6 +28,8 @@ public class Budova {
         terasa.nastavVychod("vychod", vratnica);
         terasa.nastavVychod("zapad", bufet);
         
+        terasa.polozPredmet(new PredmetGranat());
+        
         vratnica.nastavVychod("zapad", terasa);
         vratnica.nastavVychod("sever", chodbaA);
         vratnica.nastavVychod("juh", chodbickaB);
