@@ -69,5 +69,16 @@ public class Hrac {
         this.aktualnaMiestnost.polozPredmet(predmet);
         return true;
     }
+
+    public boolean pouziPredmet(String nazovPredmetu) {
+        Predmet predmet = this.inventar.get(nazovPredmetu);
+        
+        if (predmet == null) {
+            return false;
+        }
+        
+        predmet.pouziSa();
+        return true;
+    }
     
 }

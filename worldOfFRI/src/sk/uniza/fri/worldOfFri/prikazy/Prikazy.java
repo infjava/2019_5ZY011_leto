@@ -16,7 +16,7 @@ public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "hladaj", "zober", "inventar",
-        "zahod"
+        "zahod", "pouzi"
     };
 
     /**
@@ -72,6 +72,9 @@ public class Prikazy {
                 return false;
             case "zahod":
                 this.zahodPredmet(hrac, prikaz);
+                return false;
+            case "pouzi":
+                this.pouziPredmet(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -147,6 +150,13 @@ public class Prikazy {
     private void zahodPredmet(Hrac hrac, Prikaz prikaz) {
         String nazovPredmetu = prikaz.getParameter();
         if (!hrac.zahodPredmet(nazovPredmetu)) {
+            System.out.format("No sorry, ale predmet %s nemas!%n", nazovPredmetu);
+        }
+    }
+
+    private void pouziPredmet(Hrac hrac, Prikaz prikaz) {
+        String nazovPredmetu = prikaz.getParameter();
+        if (!hrac.pouziPredmet(nazovPredmetu)) {
             System.out.format("No sorry, ale predmet %s nemas!%n", nazovPredmetu);
         }
     }

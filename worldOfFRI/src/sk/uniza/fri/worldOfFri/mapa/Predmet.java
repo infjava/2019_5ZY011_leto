@@ -20,5 +20,9 @@ public class Predmet {
     public String getNazov() {
         return this.nazov;
     }
+
+    public void pouziSa() {
+        System.out.format("Predmet %s sa neda pouzit%n", this.nazov);
+    }
     
 }

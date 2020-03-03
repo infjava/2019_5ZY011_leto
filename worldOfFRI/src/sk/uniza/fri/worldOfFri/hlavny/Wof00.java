@@ -26,6 +26,7 @@ Predmety
 - notebook - dekodovanie zaheslovanych vstupov
 - akcie:
   - pouzitie
+    > pouzi isic
   - uschovanie
     > zober isic
   - zahodenie
