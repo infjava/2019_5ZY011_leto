@@ -58,5 +58,16 @@ public class Hrac {
             }
         }
     }
+
+    public boolean zahodPredmet(String nazovPredmetu) {
+        Predmet predmet = this.inventar.remove(nazovPredmetu);
+        
+        if (predmet == null) {
+            return false;
+        }
+        
+        this.aktualnaMiestnost.polozPredmet(predmet);
+        return true;
+    }
     
 }
