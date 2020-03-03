@@ -16,10 +16,12 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 public class Hrac {
     private Miestnost aktualnaMiestnost;
     private final HashMap<String, IPredmet> inventar;
+    private boolean zije;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
         this.inventar = new HashMap<String, IPredmet>();
+        this.zije = true;
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -77,8 +79,16 @@ public class Hrac {
             return false;
         }
         
-        predmet.pouziSa();
+        predmet.pouziSa(this);
         return true;
+    }
+
+    public boolean getZije() {
+        return this.zije;
+    }
+
+    public void umri() {
+        this.zije = false;
     }
     
 }

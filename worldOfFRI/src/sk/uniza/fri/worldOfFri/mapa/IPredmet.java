@@ -5,11 +5,13 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+
 /**
  *
  * @author janik
  */
 public interface IPredmet {
     String getNazov();
-    void pouziSa();
+    void pouziSa(Hrac hrac);
 }

@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+
 
 public class PredmetIsic implements IPredmet {
 
@@ -14,7 +16,7 @@ public class PredmetIsic implements IPredmet {
     }
 
     @Override
-    public void pouziSa() {
+    public void pouziSa(Hrac hrac) {
         System.out.println("Otvaram dvere, pozor aby ta nebuchli");
     }
     

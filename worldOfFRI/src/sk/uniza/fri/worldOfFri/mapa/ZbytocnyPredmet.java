@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+
 /**
  *
  * @author janik
@@ -23,7 +25,7 @@ public class ZbytocnyPredmet implements IPredmet {
     }
 
     @Override
-    public void pouziSa() {
+    public void pouziSa(Hrac hrac) {
         System.out.format("Predmet %s sa neda pouzit%n", this.nazov);
     }
     

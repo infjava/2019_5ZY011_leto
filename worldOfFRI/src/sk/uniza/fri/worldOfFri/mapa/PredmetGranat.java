@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+
 /**
  *
  * @author janik
@@ -23,10 +25,11 @@ public class PredmetGranat implements IPredmet {
     }
 
     @Override
-    public void pouziSa() {
+    public void pouziSa(Hrac hrac) {
         this.pocetPouziti++;
         if (this.pocetPouziti == 11) {
             System.out.println("BOOOM!");
+            hrac.umri();
         } else if (this.pocetPouziti < 11) {
             System.out.println(11 - this.pocetPouziti);
         }

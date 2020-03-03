@@ -57,9 +57,13 @@ public class Hra  {
         do {
             Prikaz prikaz = this.parser.nacitajPrikaz();
             jeKoniec = this.prikazy.vykonajPrikaz(this.hrac, prikaz);
-        } while (!jeKoniec);
+        } while (!jeKoniec && this.hrac.getZije());
         
-        System.out.println("Maj sa fajn!");
+        if (this.hrac.getZije()) {
+            System.out.println("Maj sa fajn!");
+        } else {
+            System.out.println("Pozdravuj pradeda.");
+        }
     }
 
     /**
