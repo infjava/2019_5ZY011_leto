@@ -13,5 +13,6 @@ public interface IDvere {
 
     Miestnost getVychod();
     boolean mozePrejst();
+    void hracPresiel();
     
 }

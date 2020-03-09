@@ -29,5 +29,10 @@ public class InteligentneDvere implements IDvere {
     void odomkni() {
         this.odomknute = true;
     }
+
+    @Override
+    public void hracPresiel() {
+        this.odomknute = false;
+    }
     
 }

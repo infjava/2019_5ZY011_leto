@@ -27,5 +27,9 @@ class Dvere implements IDvere {
     public boolean mozePrejst() {
         return true;
     }
-    
+
+    @Override
+    public void hracPresiel() {
+        
+    }
 }

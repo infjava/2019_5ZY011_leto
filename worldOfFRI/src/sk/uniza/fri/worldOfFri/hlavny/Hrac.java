@@ -41,6 +41,7 @@ public class Hrac {
         }
         
         this.aktualnaMiestnost = dvereVSmere.getVychod();
+        dvereVSmere.hracPresiel();
         return true;
     }
 
