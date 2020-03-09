@@ -22,5 +22,10 @@ class Dvere implements IDvere {
     public Miestnost getVychod() {
         return this.vychod;
     }
+
+    @Override
+    public boolean mozePrejst() {
+        return true;
+    }
     
 }

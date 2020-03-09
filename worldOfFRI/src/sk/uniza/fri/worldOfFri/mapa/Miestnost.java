@@ -64,8 +64,8 @@ public class Miestnost {
         return this.popisMiestnosti;
     }
 
-    public Miestnost getVychod(String smer) {
-        return this.vychody.get(smer).getVychod();
+    public IDvere getDvere(String smer) {
+        return this.vychody.get(smer);
     }
 
     public void polozPredmet(IPredmet predmet) {

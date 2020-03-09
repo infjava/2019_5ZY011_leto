@@ -9,14 +9,21 @@ package sk.uniza.fri.worldOfFri.mapa;
 public class InteligentneDvere implements IDvere {
 
     private final Miestnost labak;
+    private boolean odomknute;
 
     public InteligentneDvere(Miestnost labak) {
         this.labak = labak;
+        this.odomknute = false;
     }
 
     @Override
     public Miestnost getVychod() {
         return this.labak;
+    }
+
+    @Override
+    public boolean mozePrejst() {
+        return this.odomknute;
     }
     
 }

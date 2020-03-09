@@ -12,5 +12,6 @@ package sk.uniza.fri.worldOfFri.mapa;
 public interface IDvere {
 
     Miestnost getVychod();
+    boolean mozePrejst();
     
 }

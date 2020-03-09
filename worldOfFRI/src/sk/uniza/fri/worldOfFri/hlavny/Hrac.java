@@ -6,6 +6,7 @@
 package sk.uniza.fri.worldOfFri.hlavny;
 
 import java.util.HashMap;
+import sk.uniza.fri.worldOfFri.mapa.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.IPredmet;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 
@@ -29,13 +30,17 @@ public class Hrac {
     }
 
     public boolean chodDanymSmerom(String smer) {
-        Miestnost novaMiestnost = this.aktualnaMiestnost.getVychod(smer);
+        IDvere dvereVSmere = this.aktualnaMiestnost.getDvere(smer);
 
-        if (novaMiestnost == null) {
+        if (dvereVSmere == null) {
             return false;
         }
         
-        this.aktualnaMiestnost = novaMiestnost;
+        if (!dvereVSmere.mozePrejst()) {
+            return false;
+        }
+        
+        this.aktualnaMiestnost = dvereVSmere.getVychod();
         return true;
     }
 
