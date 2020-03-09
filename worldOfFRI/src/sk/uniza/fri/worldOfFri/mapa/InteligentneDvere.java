@@ -25,5 +25,9 @@ public class InteligentneDvere implements IDvere {
     public boolean mozePrejst() {
         return this.odomknute;
     }
+
+    void odomkni() {
+        this.odomknute = true;
+    }
     
 }

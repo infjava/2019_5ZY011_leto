@@ -17,7 +17,21 @@ public class PredmetIsic implements IPredmet {
 
     @Override
     public void pouziSa(Hrac hrac) {
-        System.out.println("Otvaram dvere, pozor aby ta nebuchli");
+        boolean otovrilSom = false;
+        Miestnost aktualna = hrac.getAktualnaMiestnost();
+        
+        for (IDvere dvere : aktualna.getVsetkyDvere()) {
+            if (dvere instanceof InteligentneDvere) {
+                InteligentneDvere inteligentneDvere = (InteligentneDvere)dvere;
+                inteligentneDvere.odomkni();
+                otovrilSom = true;
+            }
+        }
+        if (otovrilSom) {
+            System.out.println("Otvaram dvere, pozor aby ta nebuchli");
+        } else {
+            System.out.println("Ako chces ten ISIC pouzit? Vsetky dvere okolo teba su blbe, potrebujes inteligentne");
+        }
     }
     
 }

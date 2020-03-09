@@ -1,5 +1,6 @@
 package sk.uniza.fri.worldOfFri.mapa;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.TreeMap;
 
@@ -66,6 +67,10 @@ public class Miestnost {
 
     public IDvere getDvere(String smer) {
         return this.vychody.get(smer);
+    }
+    
+    public Collection<IDvere> getVsetkyDvere() {
+        return this.vychody.values();
     }
 
     public void polozPredmet(IPredmet predmet) {
