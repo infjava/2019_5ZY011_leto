@@ -57,7 +57,7 @@ public class Budova {
         chodbaC.nastavVychod("zapad", bufet);
         
         bufet.nastavVychod("sever", terasa);
-        bufet.nastavVychod("vychod", chodbaC);
+        bufet.nastavVychod("vychod", new InteligentneDvere(chodbaC));
 
         this.startovaciaMiestnost = vratnica;
     }

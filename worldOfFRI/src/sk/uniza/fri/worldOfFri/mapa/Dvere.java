@@ -9,7 +9,7 @@ package sk.uniza.fri.worldOfFri.mapa;
  *
  * @author janik
  */
-class Dvere {
+class Dvere implements IDvere {
 
     private final Miestnost vychod;
 
@@ -18,7 +18,8 @@ class Dvere {
         
     }
 
-    Miestnost getVychod() {
+    @Override
+    public Miestnost getVychod() {
         return this.vychod;
     }
     
