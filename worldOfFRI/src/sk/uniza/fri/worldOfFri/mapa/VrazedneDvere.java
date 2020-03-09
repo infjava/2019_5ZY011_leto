@@ -5,19 +5,19 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import java.util.Random;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 
 /**
  *
  * @author janik
  */
-class Dvere implements IDvere {
+public class VrazedneDvere implements IDvere {
 
     private final Miestnost vychod;
 
-    Dvere(Miestnost vychod) {
+    public VrazedneDvere(Miestnost vychod) {
         this.vychod = vychod;
-        
     }
 
     @Override
@@ -32,6 +32,11 @@ class Dvere implements IDvere {
 
     @Override
     public void hracPresiel(Hrac hrac) {
-        
+        Random rand = new Random();
+        if (rand.nextBoolean()) {
+            System.out.println("Zabili ta vrazedne dvere");
+            hrac.umri();
+        }
     }
+    
 }

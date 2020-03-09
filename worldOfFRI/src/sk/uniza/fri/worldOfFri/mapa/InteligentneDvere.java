@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+
 
 public class InteligentneDvere implements IDvere {
 
@@ -31,7 +33,7 @@ public class InteligentneDvere implements IDvere {
     }
 
     @Override
-    public void hracPresiel() {
+    public void hracPresiel(Hrac hrac) {
         this.odomknute = false;
     }
     

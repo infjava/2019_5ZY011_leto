@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+
 /**
  *
  * @author janik
@@ -13,6 +15,6 @@ public interface IDvere {
 
     Miestnost getVychod();
     boolean mozePrejst();
-    void hracPresiel();
+    void hracPresiel(Hrac hrac);
     
 }

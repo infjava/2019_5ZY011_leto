@@ -46,7 +46,7 @@ public class Budova {
         
         chodbaA.nastavVychod("juh", vratnica);
         chodbaA.nastavVychod("zapad", ra006);
-        chodbaA.nastavVychod("hore", dekanat);
+        chodbaA.nastavVychod("hore", new VrazedneDvere(dekanat));
         chodbaA.nastavVychod("dole", chodbaC);
         
         dekanat.nastavVychod("dole", chodbaA);
