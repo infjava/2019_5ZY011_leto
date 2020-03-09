@@ -17,7 +17,7 @@ import java.util.TreeMap;
  */
 public class Miestnost {
     private String popisMiestnosti;
-    private TreeMap<String, Miestnost> vychody;
+    private TreeMap<String, Dvere> vychody;
     private final HashMap<String, IPredmet> predmety;
 
     /**
@@ -29,7 +29,7 @@ public class Miestnost {
      */
     public Miestnost(String popis) {
         this.popisMiestnosti = popis;
-        this.vychody = new TreeMap<String, Miestnost>();
+        this.vychody = new TreeMap<String, Dvere>();
         this.predmety = new HashMap<String, IPredmet>();
     }
     
@@ -50,7 +50,7 @@ public class Miestnost {
      * @param vychod miestnost danym smerom.
      */
     public void nastavVychod(String smer, Miestnost vychod) {
-        this.vychody.put(smer, vychod);
+        this.vychody.put(smer, new Dvere(vychod));
     }
 
     /**
@@ -61,7 +61,7 @@ public class Miestnost {
     }
 
     public Miestnost getVychod(String smer) {
-        return this.vychody.get(smer);
+        return this.vychody.get(smer).getVychod();
     }
 
     public void polozPredmet(IPredmet predmet) {
