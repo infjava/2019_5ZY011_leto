@@ -58,6 +58,10 @@ public class Miestnost {
         this.vychody.put(smer, dvere);
     }
 
+    void zrusVychod(String smer) {
+        this.vychody.remove(smer);
+    }
+
     /**
      * @return textovy popis miestnosti.
      */
