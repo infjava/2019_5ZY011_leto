@@ -16,7 +16,7 @@ public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "hladaj", "zober", "inventar",
-        "zahod", "pouzi"
+        "zahod", "pouzi", "questbook"
     };
 
     /**
@@ -75,6 +75,9 @@ public class Prikazy {
                 return false;
             case "pouzi":
                 this.pouziPredmet(hrac, prikaz);
+                return false;
+            case "questbook":
+                this.zobrazQuestbook(hrac);
                 return false;
             default:
                 return false;
@@ -159,5 +162,9 @@ public class Prikazy {
         if (!hrac.pouziPredmet(nazovPredmetu)) {
             System.out.format("No sorry, ale predmet %s nemas!%n", nazovPredmetu);
         }
+    }
+
+    private void zobrazQuestbook(Hrac hrac) {
+        hrac.getQuestbook().vypisQuesty();
     }
 }
