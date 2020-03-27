@@ -48,6 +48,9 @@ public class Hrac {
         
         this.aktualnaMiestnost = dvereVSmere.getVychod();
         dvereVSmere.hracPresiel(this);
+        
+        this.questbook.getRiadic().hracSaPohol();
+        
         return true;
     }
 

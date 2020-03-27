@@ -14,9 +14,11 @@ import java.util.ArrayList;
 public class Questbook {
 
     private final ArrayList<QuestPrechadzaniaMiestnostami> questy;
+    private final RiadicQuestov riadic;
 
     public Questbook() {
         this.questy = new ArrayList<QuestPrechadzaniaMiestnostami>();
+        this.riadic = new RiadicQuestov(this.questy);
     }
     
     public void pridajQuest(QuestPrechadzaniaMiestnostami quest) {
@@ -33,5 +35,9 @@ public class Questbook {
                 System.out.format("  %s%n", quest.getPopis());
             }
         }
+    }
+
+    public RiadicQuestov getRiadic() {
+        return this.riadic;
     }
 }

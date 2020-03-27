@@ -12,9 +12,11 @@ package sk.uniza.fri.worldOfFri.hlavny;
 public class QuestPrechadzaniaMiestnostami {
 
     private final int pocet;
+    private int aktualnyStav;
 
     public QuestPrechadzaniaMiestnostami(int pocet) {
         this.pocet = pocet;
+        this.aktualnyStav = 0;
     }
 
     
@@ -24,6 +26,14 @@ public class QuestPrechadzaniaMiestnostami {
 
     String getPopis() {
         return String.format("Stary Dezo od teba chce, aby si sa riadne nachodil. Prejdi pre neho aspon %d miestnosti.", this.pocet);
+    }
+
+    void hracSaPohol() {
+        this.aktualnyStav++;
+        
+        if (this.pocet == this.aktualnyStav) {
+            System.out.println("Dezo bude rad, prave si splnil quest");
+        }
     }
     
 }
