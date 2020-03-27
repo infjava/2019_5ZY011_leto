@@ -35,5 +35,9 @@ public class QuestPrechadzaniaMiestnostami {
             System.out.println("Dezo bude rad, prave si splnil quest");
         }
     }
+
+    boolean jeSplneny() {
+        return this.aktualnyStav >= this.pocet;
+    }
     
 }

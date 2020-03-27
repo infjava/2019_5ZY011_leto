@@ -18,7 +18,7 @@ public class Questbook {
 
     public Questbook() {
         this.questy = new ArrayList<QuestPrechadzaniaMiestnostami>();
-        this.riadic = new RiadicQuestov(this.questy);
+        this.riadic = new RiadicQuestov(this);
     }
     
     public void pridajQuest(QuestPrechadzaniaMiestnostami quest) {
@@ -39,5 +39,25 @@ public class Questbook {
 
     public RiadicQuestov getRiadic() {
         return this.riadic;
+    }
+
+    void skontrolujStav() {
+        ArrayList<QuestPrechadzaniaMiestnostami> naVymazanie = new ArrayList<QuestPrechadzaniaMiestnostami>();
+        
+        for (QuestPrechadzaniaMiestnostami quest : this.questy) {
+            if (quest.jeSplneny()) {
+                // nemazeme priamo z this.questy, lebo by nam padol for-each
+                naVymazanie.add(quest);
+            }
+        }
+        
+        this.questy.removeAll(naVymazanie);
+    }
+
+    ArrayList<QuestPrechadzaniaMiestnostami> getQuesty() {
+        // vraciame kopiu, aby sme neporusili zapuzdrenie
+        ArrayList<QuestPrechadzaniaMiestnostami> ret = new ArrayList<QuestPrechadzaniaMiestnostami>();
+        ret.addAll(this.questy);
+        return ret;
     }
 }

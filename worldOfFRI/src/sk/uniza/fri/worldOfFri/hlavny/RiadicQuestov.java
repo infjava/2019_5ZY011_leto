@@ -15,16 +15,17 @@ import java.util.ArrayList;
  */
 public class RiadicQuestov {
 
-    private final ArrayList<QuestPrechadzaniaMiestnostami> questy;
+    private final Questbook questbook;
 
-    RiadicQuestov(ArrayList<QuestPrechadzaniaMiestnostami> questy) {
-        this.questy = questy;
+    RiadicQuestov(Questbook questbook) {
+        this.questbook = questbook;
     }
     
     public void hracSaPohol() {
-        for (QuestPrechadzaniaMiestnostami quest : this.questy) {
+        for (QuestPrechadzaniaMiestnostami quest : this.questbook.getQuesty()) {
             quest.hracSaPohol();
         }
+        questbook.skontrolujStav();
     }
     
 }
