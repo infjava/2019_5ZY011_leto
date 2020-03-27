@@ -18,15 +18,21 @@ public class Hrac {
     private Miestnost aktualnaMiestnost;
     private final HashMap<String, IPredmet> inventar;
     private boolean zije;
+    private final Questbook questbook;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
         this.inventar = new HashMap<String, IPredmet>();
         this.zije = true;
+        this.questbook = new Questbook();
     }
 
     public Miestnost getAktualnaMiestnost() {
         return this.aktualnaMiestnost;
+    }
+
+    public Questbook getQuestbook() {
+        return this.questbook;
     }
 
     public boolean chodDanymSmerom(String smer) {

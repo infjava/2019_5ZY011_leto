@@ -38,6 +38,8 @@ public class Budova {
         
         vratnica.polozPredmet(new PredmetIsic());
         
+        vratnica.polozPredmet(new Dezo());
+        
         chodbickaB.nastavVychod("sever", vratnica);
         chodbickaB.nastavVychod("juh", chodbaB);
         
