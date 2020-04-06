@@ -12,14 +12,22 @@ package sk.uniza.fri.worldOfFri.mapa;
 public abstract class Npc {
 
     private final String meno;
+    private Miestnost aktualnaMiestnost;
 
     Npc(String meno) {
         this.meno = meno;
-        
+        this.aktualnaMiestnost = null;
     }
 
     public String getMeno() {
         return this.meno;
     }
-    
+
+    public void nastavMiestnost(Miestnost miestnost) {
+        this.aktualnaMiestnost = miestnost;
+    }
+
+    public Miestnost getAktualnaMiestnost() {
+        return this.aktualnaMiestnost;
+    }
 }

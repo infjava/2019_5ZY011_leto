@@ -23,6 +23,7 @@ public class HostileNpc extends Npc {
             System.out.format("Zautocil si na %s a zobral si mu zivot, este ostava %d%n", this.getMeno(), this.zivoty);
         } else {
             System.out.format("Zabil si %s%n", this.getMeno());
+            this.getAktualnaMiestnost().odstranNpc(this.getMeno());
         }
     }
     

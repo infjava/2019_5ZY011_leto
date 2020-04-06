@@ -108,6 +108,7 @@ public class Miestnost {
 
     void postavNpc(Npc npc) {
         this.npccka.put(npc.getMeno(), npc);
+        npc.nastavMiestnost(this);
     }
 
     public boolean daSaOpustit() {
@@ -122,5 +123,9 @@ public class Miestnost {
 
     public Npc getNpc(String meno) {
         return this.npccka.get(meno);
+    }
+
+    void odstranNpc(String meno) {
+        this.npccka.remove(meno);
     }
 }
