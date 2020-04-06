@@ -119,4 +119,8 @@ public class Miestnost {
         
         return true;
     }
+
+    public Npc getNpc(String meno) {
+        return this.npccka.get(meno);
+    }
 }

@@ -9,7 +9,7 @@ package sk.uniza.fri.worldOfFri.mapa;
  *
  * @author janik
  */
-abstract class Npc {
+public abstract class Npc {
 
     private final String meno;
 

@@ -6,9 +6,11 @@
 package sk.uniza.fri.worldOfFri.hlavny;
 
 import java.util.HashMap;
+import sk.uniza.fri.worldOfFri.mapa.HostileNpc;
 import sk.uniza.fri.worldOfFri.mapa.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.IPredmet;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
+import sk.uniza.fri.worldOfFri.mapa.Npc;
 
 /**
  *
@@ -108,6 +110,19 @@ public class Hrac {
 
     public void umri() {
         this.zije = false;
+    }
+
+    public boolean zautocNaNpc(String meno) {
+        Npc npc = this.aktualnaMiestnost.getNpc(meno);
+        
+        if (npc instanceof HostileNpc) {
+            HostileNpc hostileNpc = (HostileNpc) npc;
+            hostileNpc.prijmiUtok();
+            
+            return true;
+        }
+        
+        return false;
     }
     
 }

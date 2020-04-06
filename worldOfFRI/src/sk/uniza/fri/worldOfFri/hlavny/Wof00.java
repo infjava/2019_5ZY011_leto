@@ -19,7 +19,7 @@ Npc - non-playable character
   - rozhovor
     > oslov dekan
   - suboj
-    > bojuj vsm
+    > zautoc vlk
 Predmety
 - mec
 - bageta, dodava staminu
