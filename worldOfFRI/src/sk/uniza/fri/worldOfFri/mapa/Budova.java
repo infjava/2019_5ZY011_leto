@@ -28,7 +28,7 @@ public class Budova {
         terasa.nastavVychod("vychod", vratnica);
         terasa.nastavVychod("zapad", bufet);
         
-        terasa.postavNpc(new Npc("vlk"));
+        terasa.postavNpc(new HostileNpc("vlk"));
         
         terasa.polozPredmet(new PredmetGranat());
         

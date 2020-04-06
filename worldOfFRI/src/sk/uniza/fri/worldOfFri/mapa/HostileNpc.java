@@ -5,21 +5,11 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
-/**
- *
- * @author janik
- */
-abstract class Npc {
 
-    private final String meno;
+public class HostileNpc extends Npc {
 
-    Npc(String meno) {
-        this.meno = meno;
-        
-    }
-
-    public String getMeno() {
-        return this.meno;
+    public HostileNpc(String meno) {
+        super(meno);
     }
     
 }
