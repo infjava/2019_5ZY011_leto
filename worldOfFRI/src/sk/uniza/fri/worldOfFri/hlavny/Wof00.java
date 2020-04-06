@@ -15,8 +15,11 @@ Npc - non-playable character
 - akcie:
   - dava questy
   - obchod
+    > nakupuj bufetarka
   - rozhovor
+    > oslov dekan
   - suboj
+    > bojuj vsm
 Predmety
 - mec
 - bageta, dodava staminu
