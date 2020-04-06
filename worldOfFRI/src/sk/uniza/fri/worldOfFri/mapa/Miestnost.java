@@ -109,4 +109,14 @@ public class Miestnost {
     void postavNpc(Npc npc) {
         this.npccka.put(npc.getMeno(), npc);
     }
+
+    public boolean daSaOpustit() {
+        for (Npc npc : this.npccka.values()) {
+            if (npc instanceof HostileNpc) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
 }

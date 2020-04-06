@@ -36,6 +36,10 @@ public class Hrac {
     }
 
     public boolean chodDanymSmerom(String smer) {
+        if (!this.aktualnaMiestnost.daSaOpustit()) {
+            return false;
+        }
+        
         IDvere dvereVSmere = this.aktualnaMiestnost.getDvere(smer);
 
         if (dvereVSmere == null) {
