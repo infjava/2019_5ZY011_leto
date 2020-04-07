@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
+import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
@@ -127,5 +128,13 @@ public class Miestnost {
 
     void odstranNpc(String meno) {
         this.npccka.remove(meno);
+    }
+    
+    public void zautocitVsetkymiNpc(Hrac hrac) {
+        for (Npc npc : this.npccka.values()) {
+            if (npc instanceof HostileNpc) {
+                ((HostileNpc) npc).zautoc(hrac);
+            }
+        }
     }
 }

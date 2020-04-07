@@ -57,6 +57,7 @@ public class Hra  {
         do {
             Prikaz prikaz = this.parser.nacitajPrikaz();
             jeKoniec = this.prikazy.vykonajPrikaz(this.hrac, prikaz);
+            this.vykonajKrokyPocitaca();
         } while (!jeKoniec && this.hrac.getZije());
         
         if (this.hrac.getZije()) {
@@ -76,5 +77,9 @@ public class Hra  {
         System.out.println("Zadaj 'pomoc' ak potrebujes pomoc.");
         System.out.println();
         this.hrac.getAktualnaMiestnost().vypisInfo();
+    }
+
+    private void vykonajKrokyPocitaca() {
+        this.hrac.getAktualnaMiestnost().zautocitVsetkymiNpc(this.hrac);
     }
 }

@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+
 
 public class HostileNpc extends Npc {
 
@@ -25,6 +27,10 @@ public class HostileNpc extends Npc {
             System.out.format("Zabil si %s%n", this.getMeno());
             this.getAktualnaMiestnost().odstranNpc(this.getMeno());
         }
+    }
+
+    void zautoc(Hrac hrac) {
+        hrac.prijmiUtok();
     }
     
 }
