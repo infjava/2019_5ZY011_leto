@@ -1,6 +1,8 @@
 package sk.uniza.fri.worldOfFri.prikazy;
 
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.hlavny.NeexistujucaNpc;
+import sk.uniza.fri.worldOfFri.hlavny.NpcNespravnehoTypu;
 
 /**
  * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 
@@ -183,8 +185,12 @@ public class Prikazy {
 
     private void nakupujOdNpc(Hrac hrac, Prikaz prikaz) {
         String meno = prikaz.getParameter();
-        if (!hrac.nakupujOdNpc(meno)) {
+        try {
+            hrac.nakupujOdNpc(meno);
+        } catch (NeexistujucaNpc ex) {
             System.out.format("Npc %s nide nevidis!%n", meno);
+        } catch (NpcNespravnehoTypu ex) {
+            System.out.format("Npc %s nie je obchodnikom!%n", meno);
         }
     }
 }

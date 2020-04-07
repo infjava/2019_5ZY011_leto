@@ -143,8 +143,12 @@ public class Hrac {
         return false;
     }
 
-    public boolean nakupujOdNpc(String meno) {
+    public void nakupujOdNpc(String meno) throws NeexistujucaNpc, NpcNespravnehoTypu {
         Npc npc = this.aktualnaMiestnost.getNpc(meno);
+        
+        if (npc == null) {
+            throw new NeexistujucaNpc();
+        }
         
         if (npc instanceof Obchodnik) {
             Obchodnik obchodnik = ((Obchodnik) npc);
@@ -157,7 +161,7 @@ public class Hrac {
                 String nazovPredmetu = vstup.nextLine();
                 
                 if (nazovPredmetu.equals("nic")) {
-                    return true;
+                    return;
                 }
                 
                 tovar = obchodnik.kup(nazovPredmetu, this.peniaze);
@@ -166,10 +170,10 @@ public class Hrac {
             this.peniaze -= tovar.getCena();
             this.inventar.put(tovar.getPredmet().getNazov(), tovar.getPredmet());
             
-            return true;
+            return;
         }
         
-        return false;
+        throw new NpcNespravnehoTypu();
     }
     
 }
