@@ -25,6 +25,7 @@ public class Hrac {
     private boolean zije;
     private final Questbook questbook;
     private int zivoty;
+    private int peniaze;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
@@ -32,6 +33,7 @@ public class Hrac {
         this.zije = true;
         this.questbook = new Questbook();
         this.zivoty = 10;
+        this.peniaze = 20;
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -85,6 +87,7 @@ public class Hrac {
                 System.out.format("- %s%n", nazov);
             }
         }
+        System.out.format("Mas: %d zlatiek%n", this.peniaze);
     }
 
     public boolean zahodPredmet(String nazovPredmetu) {
@@ -157,9 +160,10 @@ public class Hrac {
                     return true;
                 }
                 
-                tovar = obchodnik.kup(nazovPredmetu);
+                tovar = obchodnik.kup(nazovPredmetu, this.peniaze);
             } while (tovar == null);
             
+            this.peniaze -= tovar.getCena();
             this.inventar.put(tovar.getPredmet().getNazov(), tovar.getPredmet());
             
             return true;

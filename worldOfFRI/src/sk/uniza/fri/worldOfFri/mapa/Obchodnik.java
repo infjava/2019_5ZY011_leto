@@ -31,7 +31,11 @@ public class Obchodnik extends Npc {
         }
     }
 
-    public Tovar kup(String nazovPredmetu) {
+    public Tovar kup(String nazovPredmetu, int maximalnaCena) {
+        Tovar tovar = this.inventar.get(nazovPredmetu);
+        if (tovar.getCena() > maximalnaCena) {
+            return null; // tovar s takymto nazvom za tuto cenu nemame
+        }
         return this.inventar.remove(nazovPredmetu);
     }
     
