@@ -21,12 +21,14 @@ public class Hrac {
     private final HashMap<String, IPredmet> inventar;
     private boolean zije;
     private final Questbook questbook;
+    private int zivoty;
 
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
         this.inventar = new HashMap<String, IPredmet>();
         this.zije = true;
         this.questbook = new Questbook();
+        this.zivoty = 10;
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -110,6 +112,16 @@ public class Hrac {
 
     public void umri() {
         this.zije = false;
+    }
+    
+    public void prijmiUtok() {
+        this.zivoty--;
+        
+        if (this.zivoty > 0) {
+            System.out.format("Prijal si utok, mas este %d zivotov%n", this.zivoty);
+        } else {
+            this.umri();
+        }
     }
 
     public boolean zautocNaNpc(String meno) {
