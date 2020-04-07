@@ -153,6 +153,10 @@ public class Hrac {
                 Scanner vstup = new Scanner(System.in);
                 String nazovPredmetu = vstup.nextLine();
                 
+                if (nazovPredmetu.equals("nic")) {
+                    return true;
+                }
+                
                 tovar = obchodnik.kup(nazovPredmetu);
             } while (tovar == null);
             
