@@ -5,24 +5,34 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import java.util.HashMap;
+
 /**
  *
  * @author janik
  */
 public class Obchodnik extends Npc {
 
-    private final Tovar[] inventar;
+    private final HashMap<String, Tovar> inventar;
 
     public Obchodnik(String meno, Tovar... inventar) {
         super(meno);
-        this.inventar = inventar;
+        this.inventar = new HashMap<String, Tovar>();
+        
+        for (Tovar tovar : inventar) {
+            this.inventar.put(tovar.getNazov(), tovar);
+        }
     }
 
     public void vypisTovar() {
         System.out.println("Mam uz iba:");
-        for (Tovar tovar : this.inventar) {
+        for (Tovar tovar : this.inventar.values()) {
             System.out.format("- %s (%d zlatiek)%n", tovar.getNazov(), tovar.getCena());
         }
+    }
+
+    public Tovar kup(String nazovPredmetu) {
+        return this.inventar.remove(nazovPredmetu);
     }
     
 }

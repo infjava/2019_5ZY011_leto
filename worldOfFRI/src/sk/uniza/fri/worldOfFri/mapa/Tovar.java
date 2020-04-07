@@ -9,7 +9,7 @@ package sk.uniza.fri.worldOfFri.mapa;
  *
  * @author janik
  */
-class Tovar {
+public class Tovar {
 
     private final IPredmet predmet;
     private final int cena;

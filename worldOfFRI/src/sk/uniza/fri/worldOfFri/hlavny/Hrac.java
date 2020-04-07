@@ -6,12 +6,14 @@
 package sk.uniza.fri.worldOfFri.hlavny;
 
 import java.util.HashMap;
+import java.util.Scanner;
 import sk.uniza.fri.worldOfFri.mapa.HostileNpc;
 import sk.uniza.fri.worldOfFri.mapa.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.IPredmet;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 import sk.uniza.fri.worldOfFri.mapa.Npc;
 import sk.uniza.fri.worldOfFri.mapa.Obchodnik;
+import sk.uniza.fri.worldOfFri.mapa.Tovar;
 
 /**
  *
@@ -142,7 +144,19 @@ public class Hrac {
         Npc npc = this.aktualnaMiestnost.getNpc(meno);
         
         if (npc instanceof Obchodnik) {
-            ((Obchodnik) npc).vypisTovar();
+            Obchodnik obchodnik = ((Obchodnik) npc);
+            obchodnik.vypisTovar();
+            
+            Tovar tovar;
+            do {                
+                System.out.print("co kupis> ");
+                Scanner vstup = new Scanner(System.in);
+                String nazovPredmetu = vstup.nextLine();
+                
+                tovar = obchodnik.kup(nazovPredmetu);
+            } while (tovar == null);
+            
+            this.inventar.put(tovar.getPredmet().getNazov(), tovar.getPredmet());
             
             return true;
         }
