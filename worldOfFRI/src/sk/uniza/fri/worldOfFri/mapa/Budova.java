@@ -36,6 +36,12 @@ public class Budova {
         vratnica.nastavVychod("sever", chodbaA);
         vratnica.nastavVychod("juh", chodbickaB);
         
+        vratnica.postavNpc(new Obchodnik("bufetarka", new IPredmet[] {
+            new ZbytocnyPredmet("bageta"),
+            new ZbytocnyPredmet("pizza"),
+            new ZbytocnyPredmet("horalka")
+        }));
+        
         vratnica.polozPredmet(new PredmetPortalGun());
         
         vratnica.polozPredmet(new PredmetIsic());
