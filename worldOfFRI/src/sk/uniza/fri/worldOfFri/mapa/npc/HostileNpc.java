@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.worldOfFri.mapa;
+package sk.uniza.fri.worldOfFri.mapa.npc;
 
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 
@@ -29,7 +29,7 @@ public class HostileNpc extends Npc {
         }
     }
 
-    void zautoc(Hrac hrac) {
+    public void zautoc(Hrac hrac) {
         hrac.prijmiUtok();
     }
     

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.worldOfFri.mapa;
+package sk.uniza.fri.worldOfFri.mapa.predmety;
 
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.hlavny.QuestPrechadzaniaMiestnostami;

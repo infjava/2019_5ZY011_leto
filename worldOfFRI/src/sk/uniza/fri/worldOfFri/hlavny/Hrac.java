@@ -7,13 +7,13 @@ package sk.uniza.fri.worldOfFri.hlavny;
 
 import java.util.HashMap;
 import java.util.Scanner;
-import sk.uniza.fri.worldOfFri.mapa.HostileNpc;
-import sk.uniza.fri.worldOfFri.mapa.IDvere;
-import sk.uniza.fri.worldOfFri.mapa.IPredmet;
+import sk.uniza.fri.worldOfFri.mapa.npc.HostileNpc;
+import sk.uniza.fri.worldOfFri.mapa.dvere.IDvere;
+import sk.uniza.fri.worldOfFri.mapa.predmety.IPredmet;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
-import sk.uniza.fri.worldOfFri.mapa.Npc;
-import sk.uniza.fri.worldOfFri.mapa.Obchodnik;
-import sk.uniza.fri.worldOfFri.mapa.Tovar;
+import sk.uniza.fri.worldOfFri.mapa.npc.Npc;
+import sk.uniza.fri.worldOfFri.mapa.npc.Obchodnik;
+import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
 
 /**
  *

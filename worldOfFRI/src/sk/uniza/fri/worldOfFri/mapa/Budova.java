@@ -5,6 +5,17 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
+import sk.uniza.fri.worldOfFri.mapa.dvere.InteligentneDvere;
+import sk.uniza.fri.worldOfFri.mapa.dvere.VrazedneDvere;
+import sk.uniza.fri.worldOfFri.mapa.npc.Obchodnik;
+import sk.uniza.fri.worldOfFri.mapa.npc.HostileNpc;
+import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetGranat;
+import sk.uniza.fri.worldOfFri.mapa.predmety.Dezo;
+import sk.uniza.fri.worldOfFri.mapa.predmety.ZbytocnyPredmet;
+import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetIsic;
+import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetPortalGun;
+
 /**
  *
  * @author janik

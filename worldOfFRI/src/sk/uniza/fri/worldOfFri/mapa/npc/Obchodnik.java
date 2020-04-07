@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.worldOfFri.mapa;
+package sk.uniza.fri.worldOfFri.mapa.npc;
 
 import java.util.HashMap;
 

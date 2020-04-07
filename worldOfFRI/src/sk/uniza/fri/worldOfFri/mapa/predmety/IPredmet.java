@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.worldOfFri.mapa;
+package sk.uniza.fri.worldOfFri.mapa.predmety;
 
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 
@@ -11,10 +11,7 @@ import sk.uniza.fri.worldOfFri.hlavny.Hrac;
  *
  * @author janik
  */
-public interface IDvere {
-
-    Miestnost getVychod();
-    boolean mozePrejst();
-    void hracPresiel(Hrac hrac);
-    
+public interface IPredmet {
+    String getNazov();
+    void pouziSa(Hrac hrac);
 }

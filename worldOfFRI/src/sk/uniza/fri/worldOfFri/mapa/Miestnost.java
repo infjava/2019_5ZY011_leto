@@ -1,5 +1,10 @@
 package sk.uniza.fri.worldOfFri.mapa;
 
+import sk.uniza.fri.worldOfFri.mapa.dvere.Dvere;
+import sk.uniza.fri.worldOfFri.mapa.dvere.IDvere;
+import sk.uniza.fri.worldOfFri.mapa.npc.HostileNpc;
+import sk.uniza.fri.worldOfFri.mapa.npc.Npc;
+import sk.uniza.fri.worldOfFri.mapa.predmety.IPredmet;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
@@ -69,7 +74,7 @@ public class Miestnost {
         this.vychody.put(smer, dvere);
     }
 
-    void zrusVychod(String smer) {
+    public void zrusVychod(String smer) {
         this.vychody.remove(smer);
     }
 
@@ -126,7 +131,7 @@ public class Miestnost {
         return this.npccka.get(meno);
     }
 
-    void odstranNpc(String meno) {
+    public void odstranNpc(String meno) {
         this.npccka.remove(meno);
     }
     
