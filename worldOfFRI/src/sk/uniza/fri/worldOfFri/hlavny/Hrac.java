@@ -11,6 +11,7 @@ import sk.uniza.fri.worldOfFri.mapa.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.IPredmet;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 import sk.uniza.fri.worldOfFri.mapa.Npc;
+import sk.uniza.fri.worldOfFri.mapa.Obchodnik;
 
 /**
  *
@@ -130,6 +131,18 @@ public class Hrac {
         if (npc instanceof HostileNpc) {
             HostileNpc hostileNpc = (HostileNpc) npc;
             hostileNpc.prijmiUtok();
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+    public boolean nakupujOdNpc(String meno) {
+        Npc npc = this.aktualnaMiestnost.getNpc(meno);
+        
+        if (npc instanceof Obchodnik) {
+            ((Obchodnik) npc).vypisTovar();
             
             return true;
         }

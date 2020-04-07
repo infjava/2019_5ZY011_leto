@@ -16,7 +16,7 @@ public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "hladaj", "zober", "inventar",
-        "zahod", "pouzi", "questbook", "zautoc"
+        "zahod", "pouzi", "questbook", "zautoc", "nakupuj"
     };
 
     /**
@@ -81,6 +81,9 @@ public class Prikazy {
                 return false;
             case "zautoc":
                 this.zautocNaNpc(hrac, prikaz);
+                return false;
+            case "nakupuj":
+                this.nakupujOdNpc(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -174,6 +177,13 @@ public class Prikazy {
     private void zautocNaNpc(Hrac hrac, Prikaz prikaz) {
         String meno = prikaz.getParameter();
         if (!hrac.zautocNaNpc(meno)) {
+            System.out.format("Npc %s nide nevidis!%n", meno);
+        }
+    }
+
+    private void nakupujOdNpc(Hrac hrac, Prikaz prikaz) {
+        String meno = prikaz.getParameter();
+        if (!hrac.nakupujOdNpc(meno)) {
             System.out.format("Npc %s nide nevidis!%n", meno);
         }
     }

@@ -11,8 +11,18 @@ package sk.uniza.fri.worldOfFri.mapa;
  */
 public class Obchodnik extends Npc {
 
-    public Obchodnik(String meno, IPredmet[] inventar) {
+    private final Tovar[] inventar;
+
+    public Obchodnik(String meno, Tovar... inventar) {
         super(meno);
+        this.inventar = inventar;
+    }
+
+    public void vypisTovar() {
+        System.out.println("Mam uz iba:");
+        for (Tovar tovar : this.inventar) {
+            System.out.format("- %s (%d zlatiek)%n", tovar.getNazov(), tovar.getCena());
+        }
     }
     
 }
