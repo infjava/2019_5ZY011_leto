@@ -10,6 +10,7 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
+import sk.uniza.fri.worldOfFri.vynimky.NeexistujuciVychodException;
 
 /**
  *
@@ -47,27 +48,51 @@ public class MiestnostTest {
     @Test
     public void nemaVychody() {
         Assert.assertEquals("nema vychody", this.nemaVychody.getPopis());
-        Assert.assertNull(this.nemaVychody.getVychod("vychod"));
-        Assert.assertNull(this.nemaVychody.getVychod("zapad"));
-        Assert.assertNull(this.nemaVychody.getVychod("sever"));
-        Assert.assertNull(this.nemaVychody.getVychod("juh"));
+        try {
+            this.nemaVychody.getDvere("vychod");
+            Assert.fail("Vychod na vychod nema existovat");
+        } catch (NeexistujuciVychodException e) {
+        }
+        try {
+            this.nemaVychody.getDvere("zapad");
+            Assert.fail("Vychod na zapad nema existovat");
+        } catch (NeexistujuciVychodException e) {
+        }
+        try {
+            this.nemaVychody.getDvere("sever");
+            Assert.fail("Vychod na sever nema existovat");
+        } catch (NeexistujuciVychodException e) {
+        }
+        try {
+            this.nemaVychody.getDvere("juh");
+            Assert.fail("Vychod na juh nema existovat");
+        } catch (NeexistujuciVychodException e) {
+        }
     }
 
     @Test
-    public void sever() {
+    public void sever() throws NeexistujuciVychodException {
         Assert.assertEquals("sever", this.sever.getPopis());
-        Assert.assertSame(this.vychod, this.sever.getVychod("vychod"));
-        Assert.assertSame(this.zapad, this.sever.getVychod("zapad"));
-        Assert.assertNull(this.sever.getVychod("sever"));
-        Assert.assertSame(this.juh, this.sever.getVychod("juh"));
+        Assert.assertSame(this.vychod, this.sever.getDvere("vychod").getVychod());
+        Assert.assertSame(this.zapad, this.sever.getDvere("zapad").getVychod());
+        Assert.assertSame(this.juh, this.sever.getDvere("juh").getVychod());
+    }
+
+    @Test(expected = NeexistujuciVychodException.class)
+    public void severNeznamy() throws NeexistujuciVychodException {
+        this.sever.getDvere("sever");
     }
 
     @Test
-    public void juh() {
+    public void juh() throws NeexistujuciVychodException {
         Assert.assertEquals("juh", this.juh.getPopis());
-        Assert.assertSame(this.vychod, this.juh.getVychod("vychod"));
-        Assert.assertSame(this.zapad, this.juh.getVychod("zapad"));
-        Assert.assertSame(this.sever, this.juh.getVychod("sever"));
-        Assert.assertNull(this.juh.getVychod("juh"));
+        Assert.assertSame(this.vychod, this.juh.getDvere("vychod").getVychod());
+        Assert.assertSame(this.zapad, this.juh.getDvere("zapad").getVychod());
+        Assert.assertSame(this.sever, this.juh.getDvere("sever").getVychod());
+    }
+
+    @Test(expected = NeexistujuciVychodException.class)
+    public void juhNeznamy() throws NeexistujuciVychodException {
+        this.juh.getDvere("juh");
     }
 }
