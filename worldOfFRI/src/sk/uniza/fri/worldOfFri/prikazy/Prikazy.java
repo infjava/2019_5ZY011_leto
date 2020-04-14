@@ -1,8 +1,11 @@
 package sk.uniza.fri.worldOfFri.prikazy;
 
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.hlavny.NedaSaOdistException;
 import sk.uniza.fri.worldOfFri.hlavny.NeexistujucaNpc;
+import sk.uniza.fri.worldOfFri.hlavny.NeexistujuciVychodException;
 import sk.uniza.fri.worldOfFri.hlavny.NpcNespravnehoTypu;
+import sk.uniza.fri.worldOfFri.hlavny.ZamknuteDvereException;
 
 /**
  * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 
@@ -119,10 +122,15 @@ public class Prikazy {
 
         String smer = prikaz.getParameter();
         
-        if (hrac.chodDanymSmerom(smer)) {
+        try {
+            hrac.chodDanymSmerom(smer);
             hrac.getAktualnaMiestnost().vypisInfo();
-        } else {
+        } catch (NedaSaOdistException ex) {
+            System.out.println("Teraz nemozes odist!");
+        } catch (NeexistujuciVychodException ex) {
             System.out.println("Tam nie je vychod!");
+        } catch (ZamknuteDvereException ex) {
+            System.out.println("Cez dvere sa neda prejst.");
         }
     }
 
@@ -178,8 +186,12 @@ public class Prikazy {
 
     private void zautocNaNpc(Hrac hrac, Prikaz prikaz) {
         String meno = prikaz.getParameter();
-        if (!hrac.zautocNaNpc(meno)) {
+        try {
+            hrac.zautocNaNpc(meno);
+        } catch (NeexistujucaNpc ex) {
             System.out.format("Npc %s nide nevidis!%n", meno);
+        } catch (NpcNespravnehoTypu ex) {
+            System.out.format("Npc %s nie je nepriatel!%n", meno);
         }
     }
 

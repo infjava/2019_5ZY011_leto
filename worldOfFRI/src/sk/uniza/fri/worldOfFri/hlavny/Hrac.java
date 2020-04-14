@@ -44,27 +44,26 @@ public class Hrac {
         return this.questbook;
     }
 
-    public boolean chodDanymSmerom(String smer) {
+    public void chodDanymSmerom(String smer)
+            throws NedaSaOdistException, NeexistujuciVychodException, ZamknuteDvereException {
         if (!this.aktualnaMiestnost.daSaOpustit()) {
-            return false;
+            throw new NedaSaOdistException();
         }
         
         IDvere dvereVSmere = this.aktualnaMiestnost.getDvere(smer);
 
         if (dvereVSmere == null) {
-            return false;
+            throw new NeexistujuciVychodException();
         }
         
         if (!dvereVSmere.mozePrejst()) {
-            return false;
+            throw new ZamknuteDvereException();
         }
         
         this.aktualnaMiestnost = dvereVSmere.getVychod();
         dvereVSmere.hracPresiel(this);
         
         this.questbook.getRiadic().hracSaPohol();
-        
-        return true;
     }
 
     public boolean zoberPredmet(String nazovPredmetu) {
@@ -130,17 +129,19 @@ public class Hrac {
         }
     }
 
-    public boolean zautocNaNpc(String meno) {
+    public void zautocNaNpc(String meno) throws NeexistujucaNpc, NpcNespravnehoTypu {
         Npc npc = this.aktualnaMiestnost.getNpc(meno);
         
-        if (npc instanceof HostileNpc) {
-            HostileNpc hostileNpc = (HostileNpc) npc;
-            hostileNpc.prijmiUtok();
-            
-            return true;
+        if (npc == null) {
+            throw new NeexistujucaNpc();
         }
         
-        return false;
+        if (!(npc instanceof HostileNpc)) {
+            throw new NpcNespravnehoTypu();
+        }
+        
+        HostileNpc hostileNpc = (HostileNpc) npc;
+        hostileNpc.prijmiUtok();
     }
 
     public void nakupujOdNpc(String meno) throws NeexistujucaNpc, NpcNespravnehoTypu {
@@ -150,30 +151,28 @@ public class Hrac {
             throw new NeexistujucaNpc();
         }
         
-        if (npc instanceof Obchodnik) {
-            Obchodnik obchodnik = ((Obchodnik) npc);
-            obchodnik.vypisTovar();
-            
-            Tovar tovar;
-            do {                
-                System.out.print("co kupis> ");
-                Scanner vstup = new Scanner(System.in);
-                String nazovPredmetu = vstup.nextLine();
-                
-                if (nazovPredmetu.equals("nic")) {
-                    return;
-                }
-                
-                tovar = obchodnik.kup(nazovPredmetu, this.peniaze);
-            } while (tovar == null);
-            
-            this.peniaze -= tovar.getCena();
-            this.inventar.put(tovar.getPredmet().getNazov(), tovar.getPredmet());
-            
-            return;
+        if (!(npc instanceof Obchodnik)) {
+            throw new NpcNespravnehoTypu();
         }
         
-        throw new NpcNespravnehoTypu();
+        Obchodnik obchodnik = ((Obchodnik) npc);
+        obchodnik.vypisTovar();
+
+        Tovar tovar;
+        do {                
+            System.out.print("co kupis> ");
+            Scanner vstup = new Scanner(System.in);
+            String nazovPredmetu = vstup.nextLine();
+
+            if (nazovPredmetu.equals("nic")) {
+                return;
+            }
+
+            tovar = obchodnik.kup(nazovPredmetu, this.peniaze);
+        } while (tovar == null);
+
+        this.peniaze -= tovar.getCena();
+        this.inventar.put(tovar.getPredmet().getNazov(), tovar.getPredmet());
     }
     
 }
