@@ -52,10 +52,6 @@ public class Hrac {
         
         IDvere dvereVSmere = this.aktualnaMiestnost.getDvere(smer);
 
-        if (dvereVSmere == null) {
-            throw new NeexistujuciVychodException();
-        }
-        
         if (!dvereVSmere.mozePrejst()) {
             throw new ZamknuteDvereException();
         }
@@ -132,10 +128,6 @@ public class Hrac {
     public void zautocNaNpc(String meno) throws NeexistujucaNpc, NpcNespravnehoTypu {
         Npc npc = this.aktualnaMiestnost.getNpc(meno);
         
-        if (npc == null) {
-            throw new NeexistujucaNpc();
-        }
-        
         if (!(npc instanceof HostileNpc)) {
             throw new NpcNespravnehoTypu();
         }
@@ -146,10 +138,6 @@ public class Hrac {
 
     public void nakupujOdNpc(String meno) throws NeexistujucaNpc, NpcNespravnehoTypu {
         Npc npc = this.aktualnaMiestnost.getNpc(meno);
-        
-        if (npc == null) {
-            throw new NeexistujucaNpc();
-        }
         
         if (!(npc instanceof Obchodnik)) {
             throw new NpcNespravnehoTypu();
