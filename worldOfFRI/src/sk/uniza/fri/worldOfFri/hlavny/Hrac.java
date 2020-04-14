@@ -19,6 +19,7 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 import sk.uniza.fri.worldOfFri.mapa.npc.Npc;
 import sk.uniza.fri.worldOfFri.mapa.npc.Obchodnik;
 import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
+import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 
 /**
  *
@@ -27,7 +28,6 @@ import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
 public class Hrac {
     private Miestnost aktualnaMiestnost;
     private final HashMap<String, IPredmet> inventar;
-    private boolean zije;
     private final Questbook questbook;
     private int zivoty;
     private int peniaze;
@@ -35,7 +35,6 @@ public class Hrac {
     public Hrac(Miestnost pociatocnaMiestnost) {
         this.aktualnaMiestnost = pociatocnaMiestnost;
         this.inventar = new HashMap<String, IPredmet>();
-        this.zije = true;
         this.questbook = new Questbook();
         this.zivoty = 10;
         this.peniaze = 20;
@@ -111,14 +110,6 @@ public class Hrac {
         predmet.pouziSa(this);
         return true;
     }
-
-    public boolean getZije() {
-        return this.zije;
-    }
-
-    public void umri() {
-        this.zije = false;
-    }
     
     public void prijmiUtok() {
         this.zivoty--;
@@ -126,7 +117,7 @@ public class Hrac {
         if (this.zivoty > 0) {
             System.out.format("Prijal si utok, mas este %d zivotov%n", this.zivoty);
         } else {
-            this.umri();
+            throw new SmrtException();
         }
     }
 

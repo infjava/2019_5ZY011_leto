@@ -6,6 +6,7 @@
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 
 /**
  *
@@ -29,7 +30,7 @@ public class PredmetGranat implements IPredmet {
         this.pocetPouziti++;
         if (this.pocetPouziti == 11) {
             System.out.println("BOOOM!");
-            hrac.umri();
+            throw new SmrtException();
         } else if (this.pocetPouziti < 11) {
             System.out.println(11 - this.pocetPouziti);
         }

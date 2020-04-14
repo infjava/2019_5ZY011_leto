@@ -4,6 +4,7 @@ import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.prikazy.Parser;
 import sk.uniza.fri.worldOfFri.prikazy.Prikaz;
 import sk.uniza.fri.worldOfFri.prikazy.Prikazy;
+import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 
 /**
  * Trieda Hra je hlavna trieda aplikacie "World of FRI".
@@ -54,15 +55,14 @@ public class Hra  {
                 
         boolean jeKoniec;
         
-        do {
-            Prikaz prikaz = this.parser.nacitajPrikaz();
-            jeKoniec = this.prikazy.vykonajPrikaz(this.hrac, prikaz);
-            this.vykonajKrokyPocitaca();
-        } while (!jeKoniec && this.hrac.getZije());
-        
-        if (this.hrac.getZije()) {
+        try {
+            do {
+                Prikaz prikaz = this.parser.nacitajPrikaz();
+                jeKoniec = this.prikazy.vykonajPrikaz(this.hrac, prikaz);
+                this.vykonajKrokyPocitaca();
+            } while (!jeKoniec);
             System.out.println("Maj sa fajn!");
-        } else {
+        } catch (SmrtException e) {
             System.out.println("Pozdravuj pradeda.");
         }
     }

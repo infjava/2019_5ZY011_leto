@@ -8,6 +8,7 @@ package sk.uniza.fri.worldOfFri.mapa.dvere;
 import java.util.Random;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
+import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 
 /**
  *
@@ -36,7 +37,7 @@ public class VrazedneDvere implements IDvere {
         Random rand = new Random();
         if (rand.nextBoolean()) {
             System.out.println("Zabili ta vrazedne dvere");
-            hrac.umri();
+            throw new SmrtException();
         }
     }
     
