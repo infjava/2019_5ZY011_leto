@@ -5,6 +5,11 @@
  */
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import sk.uniza.fri.worldOfFri.vynimky.NedaSaOdistException;
+import sk.uniza.fri.worldOfFri.vynimky.NpcNespravnehoTypu;
+import sk.uniza.fri.worldOfFri.vynimky.ZamknuteDvereException;
+import sk.uniza.fri.worldOfFri.vynimky.NeexistujuciVychodException;
+import sk.uniza.fri.worldOfFri.vynimky.NeexistujucaNpcException;
 import java.util.HashMap;
 import java.util.Scanner;
 import sk.uniza.fri.worldOfFri.mapa.npc.HostileNpc;
@@ -125,7 +130,7 @@ public class Hrac {
         }
     }
 
-    public void zautocNaNpc(String meno) throws NeexistujucaNpc, NpcNespravnehoTypu {
+    public void zautocNaNpc(String meno) throws NeexistujucaNpcException, NpcNespravnehoTypu {
         Npc npc = this.aktualnaMiestnost.getNpc(meno);
         
         if (!(npc instanceof HostileNpc)) {
@@ -136,7 +141,7 @@ public class Hrac {
         hostileNpc.prijmiUtok();
     }
 
-    public void nakupujOdNpc(String meno) throws NeexistujucaNpc, NpcNespravnehoTypu {
+    public void nakupujOdNpc(String meno) throws NeexistujucaNpcException, NpcNespravnehoTypu {
         Npc npc = this.aktualnaMiestnost.getNpc(meno);
         
         if (!(npc instanceof Obchodnik)) {

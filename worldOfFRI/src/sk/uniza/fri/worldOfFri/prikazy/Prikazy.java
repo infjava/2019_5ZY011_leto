@@ -1,11 +1,11 @@
 package sk.uniza.fri.worldOfFri.prikazy;
 
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
-import sk.uniza.fri.worldOfFri.hlavny.NedaSaOdistException;
-import sk.uniza.fri.worldOfFri.hlavny.NeexistujucaNpc;
-import sk.uniza.fri.worldOfFri.hlavny.NeexistujuciVychodException;
-import sk.uniza.fri.worldOfFri.hlavny.NpcNespravnehoTypu;
-import sk.uniza.fri.worldOfFri.hlavny.ZamknuteDvereException;
+import sk.uniza.fri.worldOfFri.vynimky.NedaSaOdistException;
+import sk.uniza.fri.worldOfFri.vynimky.NeexistujucaNpcException;
+import sk.uniza.fri.worldOfFri.vynimky.NeexistujuciVychodException;
+import sk.uniza.fri.worldOfFri.vynimky.NpcNespravnehoTypu;
+import sk.uniza.fri.worldOfFri.vynimky.ZamknuteDvereException;
 
 /**
  * Trieda NazvyPrikazov udrzuje zoznam nazvov platnych prikazov hry. 
@@ -188,7 +188,7 @@ public class Prikazy {
         String meno = prikaz.getParameter();
         try {
             hrac.zautocNaNpc(meno);
-        } catch (NeexistujucaNpc ex) {
+        } catch (NeexistujucaNpcException ex) {
             System.out.format("Npc %s nide nevidis!%n", meno);
         } catch (NpcNespravnehoTypu ex) {
             System.out.format("Npc %s nie je nepriatel!%n", meno);
@@ -199,7 +199,7 @@ public class Prikazy {
         String meno = prikaz.getParameter();
         try {
             hrac.nakupujOdNpc(meno);
-        } catch (NeexistujucaNpc ex) {
+        } catch (NeexistujucaNpcException ex) {
             System.out.format("Npc %s nide nevidis!%n", meno);
         } catch (NpcNespravnehoTypu ex) {
             System.out.format("Npc %s nie je obchodnikom!%n", meno);

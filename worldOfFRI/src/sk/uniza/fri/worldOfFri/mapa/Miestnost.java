@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
-import sk.uniza.fri.worldOfFri.hlavny.NeexistujucaNpc;
-import sk.uniza.fri.worldOfFri.hlavny.NeexistujuciVychodException;
+import sk.uniza.fri.worldOfFri.vynimky.NeexistujucaNpcException;
+import sk.uniza.fri.worldOfFri.vynimky.NeexistujuciVychodException;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
@@ -133,10 +133,10 @@ public class Miestnost {
         return true;
     }
 
-    public Npc getNpc(String meno) throws NeexistujucaNpc {
+    public Npc getNpc(String meno) throws NeexistujucaNpcException {
         Npc npc = this.npccka.get(meno);
         if (npc == null) {
-            throw new NeexistujucaNpc();
+            throw new NeexistujucaNpcException();
         }
         return npc;
     }
