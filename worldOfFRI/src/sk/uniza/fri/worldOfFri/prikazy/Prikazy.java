@@ -1,6 +1,8 @@
 package sk.uniza.fri.worldOfFri.prikazy;
 
+import sk.uniza.fri.worldOfFri.hlavny.Hra;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.vynimky.ChybaPriSpracovaniSave;
 import sk.uniza.fri.worldOfFri.vynimky.NedaSaOdistException;
 import sk.uniza.fri.worldOfFri.vynimky.NeexistujucaNpcException;
 import sk.uniza.fri.worldOfFri.vynimky.NeexistujuciVychodException;
@@ -21,8 +23,15 @@ public class Prikazy {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
         "chod", "ukonci", "pomoc", "hladaj", "zober", "inventar",
-        "zahod", "pouzi", "questbook", "zautoc", "nakupuj"
+        "zahod", "pouzi", "questbook", "zautoc", "nakupuj",
+        "save"
     };
+    
+    private final Hra hra;
+
+    public Prikazy(Hra hra) {
+        this.hra = hra;
+    }
 
     /**
      * Kontroluje, ci nazov v parametri je platny prikaz.
@@ -89,6 +98,9 @@ public class Prikazy {
                 return false;
             case "nakupuj":
                 this.nakupujOdNpc(hrac, prikaz);
+                return false;
+            case "save":
+                this.ulozPoziciu(hrac, prikaz);
                 return false;
             default:
                 return false;
@@ -203,6 +215,16 @@ public class Prikazy {
             System.out.format("Npc %s nide nevidis!%n", meno);
         } catch (NpcNespravnehoTypu ex) {
             System.out.format("Npc %s nie je obchodnikom!%n", meno);
+        }
+    }
+
+    private void ulozPoziciu(Hrac hrac, Prikaz prikaz) {
+        String nazov_pozicie = prikaz.getParameter();
+        
+        try {
+            this.hra.ulozPoziciu(nazov_pozicie);
+        } catch (ChybaPriSpracovaniSave ex) {
+            System.out.println("Nepodarilo sa ulozit save, skus znovu");
         }
     }
 }

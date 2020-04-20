@@ -1,5 +1,10 @@
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import sk.uniza.fri.worldOfFri.vynimky.ChybaPriSpracovaniSave;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.prikazy.Parser;
 import sk.uniza.fri.worldOfFri.prikazy.Prikaz;
@@ -36,7 +41,7 @@ public class Hra  {
      * Vytvori a inicializuje hru.
      */
     public Hra() {
-        this.prikazy = new Prikazy();
+        this.prikazy = new Prikazy(this);
         this.budova = new Budova();
         this.parser = new Parser(this.prikazy);
         this.hrac = new Hrac(this.budova.getStartovaciaMiestnost());
@@ -81,5 +86,14 @@ public class Hra  {
 
     private void vykonajKrokyPocitaca() {
         this.hrac.getAktualnaMiestnost().zautocitVsetkymiNpc(this.hrac);
+    }
+
+    public void ulozPoziciu(String nazov_pozicie) throws ChybaPriSpracovaniSave {
+        File poziciaSubor = new File(nazov_pozicie + ".wofsave");
+        try (DataOutputStream pozicia = new DataOutputStream(new FileOutputStream(poziciaSubor))) {
+            
+        } catch (IOException ex) {
+            throw new ChybaPriSpracovaniSave();
+        }
     }
 }
