@@ -5,6 +5,8 @@
  */
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.worldOfFri.vynimky.NedaSaOdistException;
 import sk.uniza.fri.worldOfFri.vynimky.NpcNespravnehoTypu;
 import sk.uniza.fri.worldOfFri.vynimky.ZamknuteDvereException;

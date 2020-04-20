@@ -32,6 +32,9 @@ import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 */
  
 public class Hra  {
+    private static final int TYP_SUBORU = 0xaaee1155;
+    private static final int VERZIA_SUBORU = 1;
+    
     private Parser parser;
     private final Hrac hrac;
     private final Budova budova;
@@ -91,7 +94,8 @@ public class Hra  {
     public void ulozPoziciu(String nazov_pozicie) throws ChybaPriSpracovaniSave {
         File poziciaSubor = new File(nazov_pozicie + ".wofsave");
         try (DataOutputStream pozicia = new DataOutputStream(new FileOutputStream(poziciaSubor))) {
-            
+            pozicia.writeInt(Hra.TYP_SUBORU);
+            pozicia.writeInt(Hra.VERZIA_SUBORU);
         } catch (IOException ex) {
             throw new ChybaPriSpracovaniSave();
         }
