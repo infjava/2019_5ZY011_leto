@@ -117,6 +117,8 @@ public class Hra  {
             if (verzia > Hra.VERZIA_SUBORU) {
                 throw new ChybaPriSpracovaniSaveException();
             }
+            
+            hrac.nacitajPoziciu(pozicia, this.budova);
         } catch (FileNotFoundException ex) {
             throw new SaveNenajdenyException();
         } catch (IOException ex) {

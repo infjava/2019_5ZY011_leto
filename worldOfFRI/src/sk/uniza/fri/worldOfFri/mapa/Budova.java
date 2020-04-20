@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import java.util.HashMap;
 import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
 import sk.uniza.fri.worldOfFri.mapa.dvere.InteligentneDvere;
 import sk.uniza.fri.worldOfFri.mapa.dvere.VrazedneDvere;
@@ -23,18 +24,21 @@ import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetPortalGun;
 public class Budova {
 
     private final Miestnost startovaciaMiestnost;
+    private final HashMap<String, Miestnost> miestnosti;
 
     public Budova() {
-        Miestnost terasa = new Miestnost("terasa - hlavny vstup na fakultu");
-        Miestnost vratnica = new Miestnost("vratnica - tu sidli p. vratnicka");
-        Miestnost chodbickaB = new Miestnost("chodbicka b - mala prechodova miestnost, pozor na protiiducich");
-        Miestnost chodbaB = new Miestnost("chodba b - tmava chodba; ktovie, co sa tu skryva");
-        Miestnost labak = new Miestnost("labak - idealne miesto pre chovanie monstier");
-        Miestnost chodbaA = new Miestnost("chodba a - svetla chodba plna pocitacov a vitriniek");
-        Miestnost dekanat = new Miestnost("dekanat - odtialto vladne kral Dekan II");
-        Miestnost ra006 = new Miestnost("ra006 - malicky labacik");
-        Miestnost chodbaC = new Miestnost("chodba c - podzemna chodba do tajnych zakuti fakulty");
-        Miestnost bufet = new Miestnost("bufet - rozvoniava tu vyprazany syr");
+        this.miestnosti = new HashMap<String, Miestnost>();
+        
+        Miestnost terasa = this.newMiestnost("terasa - hlavny vstup na fakultu");
+        Miestnost vratnica = this.newMiestnost("vratnica - tu sidli p. vratnicka");
+        Miestnost chodbickaB = this.newMiestnost("chodbicka b - mala prechodova miestnost, pozor na protiiducich");
+        Miestnost chodbaB = this.newMiestnost("chodba b - tmava chodba; ktovie, co sa tu skryva");
+        Miestnost labak = this.newMiestnost("labak - idealne miesto pre chovanie monstier");
+        Miestnost chodbaA = this.newMiestnost("chodba a - svetla chodba plna pocitacov a vitriniek");
+        Miestnost dekanat = this.newMiestnost("dekanat - odtialto vladne kral Dekan II");
+        Miestnost ra006 = this.newMiestnost("ra006 - malicky labacik");
+        Miestnost chodbaC = this.newMiestnost("chodba c - podzemna chodba do tajnych zakuti fakulty");
+        Miestnost bufet = this.newMiestnost("bufet - rozvoniava tu vyprazany syr");
         
         terasa.nastavVychod("vychod", vratnica);
         terasa.nastavVychod("zapad", bufet);
@@ -87,6 +91,16 @@ public class Budova {
 
     public Miestnost getStartovaciaMiestnost() {
         return this.startovaciaMiestnost;
+    }
+
+    private Miestnost newMiestnost(String popis) {
+        Miestnost miestnost = new Miestnost(popis);
+        this.miestnosti.put(miestnost.getNazov(), miestnost);
+        return miestnost;
+    }
+    
+    public Miestnost getMiestnost(String nazov) {
+        return this.miestnosti.get(nazov);
     }
     
 }

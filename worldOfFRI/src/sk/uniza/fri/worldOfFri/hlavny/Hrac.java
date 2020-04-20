@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import sk.uniza.fri.worldOfFri.vynimky.NedaSaOdistException;
@@ -14,6 +15,7 @@ import sk.uniza.fri.worldOfFri.vynimky.NeexistujuciVychodException;
 import sk.uniza.fri.worldOfFri.vynimky.NeexistujucaNpcException;
 import java.util.HashMap;
 import java.util.Scanner;
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.mapa.npc.HostileNpc;
 import sk.uniza.fri.worldOfFri.mapa.dvere.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.predmety.IPredmet;
@@ -165,6 +167,13 @@ public class Hrac {
         pozicia.writeInt(this.zivoty);
         pozicia.writeInt(this.peniaze);
         pozicia.writeUTF(this.aktualnaMiestnost.getNazov());
+    }
+
+    void nacitajPoziciu(DataInputStream pozicia, Budova budova) throws IOException {
+        this.zivoty = pozicia.readInt();
+        this.peniaze = pozicia.readInt();
+        String nazovAktualnejMiestnosti = pozicia.readUTF();
+        this.aktualnaMiestnost = budova.getMiestnost(nazovAktualnejMiestnosti);
     }
     
 }
