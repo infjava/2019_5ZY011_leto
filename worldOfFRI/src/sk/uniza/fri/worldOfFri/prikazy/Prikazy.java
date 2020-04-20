@@ -237,6 +237,7 @@ public class Prikazy {
         
         try {
             this.hra.nacitajPoziciu(nazov_pozicie);
+            hrac.getAktualnaMiestnost().vypisInfo();
         } catch (ChybaPriSpracovaniSaveException ex) {
             System.out.println("Nepodarilo sa nacitat save, skus znovu");
         } catch (SaveNenajdenyException ex) {
