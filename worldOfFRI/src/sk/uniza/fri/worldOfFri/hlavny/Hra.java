@@ -109,7 +109,14 @@ public class Hra  {
     public void nacitajPoziciu(String nazov_pozicie) throws ChybaPriSpracovaniSaveException, SaveNenajdenyException {
         File poziciaSubor = new File(nazov_pozicie + ".wofsave");
         try (DataInputStream pozicia = new DataInputStream(new FileInputStream(poziciaSubor))) {
+            if (pozicia.readInt() != Hra.TYP_SUBORU) {
+                throw new ChybaPriSpracovaniSaveException();
+            }
             
+            int verzia = pozicia.readInt();
+            if (verzia > Hra.VERZIA_SUBORU) {
+                throw new ChybaPriSpracovaniSaveException();
+            }
         } catch (FileNotFoundException ex) {
             throw new SaveNenajdenyException();
         } catch (IOException ex) {
