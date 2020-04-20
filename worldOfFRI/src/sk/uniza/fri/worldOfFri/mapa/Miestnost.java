@@ -152,4 +152,10 @@ public class Miestnost {
             }
         }
     }
+    
+    public String getNazov() {
+        String[] nazovAPopis = this.popisMiestnosti.split(" - ", 2);
+        
+        return nazovAPopis[0];
+    }
 }

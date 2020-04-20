@@ -96,6 +96,7 @@ public class Hra  {
         try (DataOutputStream pozicia = new DataOutputStream(new FileOutputStream(poziciaSubor))) {
             pozicia.writeInt(Hra.TYP_SUBORU);
             pozicia.writeInt(Hra.VERZIA_SUBORU);
+            hrac.ulozPoziciu(pozicia);
         } catch (IOException ex) {
             throw new ChybaPriSpracovaniSave();
         }

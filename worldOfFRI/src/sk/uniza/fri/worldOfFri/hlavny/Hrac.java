@@ -160,5 +160,11 @@ public class Hrac {
         this.peniaze -= tovar.getCena();
         this.inventar.put(tovar.getPredmet().getNazov(), tovar.getPredmet());
     }
+
+    void ulozPoziciu(DataOutputStream pozicia) throws IOException {
+        pozicia.writeInt(this.zivoty);
+        pozicia.writeInt(this.peniaze);
+        pozicia.writeUTF(this.aktualnaMiestnost.getNazov());
+    }
     
 }
