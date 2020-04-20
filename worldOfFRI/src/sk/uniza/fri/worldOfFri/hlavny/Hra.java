@@ -1,8 +1,12 @@
 package sk.uniza.fri.worldOfFri.hlavny;
 
-import sk.uniza.fri.worldOfFri.vynimky.ChybaPriSpracovaniSave;
+import sk.uniza.fri.worldOfFri.vynimky.SaveNenajdenyException;
+import sk.uniza.fri.worldOfFri.vynimky.ChybaPriSpracovaniSaveException;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
@@ -91,14 +95,25 @@ public class Hra  {
         this.hrac.getAktualnaMiestnost().zautocitVsetkymiNpc(this.hrac);
     }
 
-    public void ulozPoziciu(String nazov_pozicie) throws ChybaPriSpracovaniSave {
+    public void ulozPoziciu(String nazov_pozicie) throws ChybaPriSpracovaniSaveException {
         File poziciaSubor = new File(nazov_pozicie + ".wofsave");
         try (DataOutputStream pozicia = new DataOutputStream(new FileOutputStream(poziciaSubor))) {
             pozicia.writeInt(Hra.TYP_SUBORU);
             pozicia.writeInt(Hra.VERZIA_SUBORU);
             hrac.ulozPoziciu(pozicia);
         } catch (IOException ex) {
-            throw new ChybaPriSpracovaniSave();
+            throw new ChybaPriSpracovaniSaveException();
+        }
+    }
+
+    public void nacitajPoziciu(String nazov_pozicie) throws ChybaPriSpracovaniSaveException, SaveNenajdenyException {
+        File poziciaSubor = new File(nazov_pozicie + ".wofsave");
+        try (DataInputStream pozicia = new DataInputStream(new FileInputStream(poziciaSubor))) {
+            
+        } catch (FileNotFoundException ex) {
+            throw new SaveNenajdenyException();
+        } catch (IOException ex) {
+            throw new ChybaPriSpracovaniSaveException();
         }
     }
 }

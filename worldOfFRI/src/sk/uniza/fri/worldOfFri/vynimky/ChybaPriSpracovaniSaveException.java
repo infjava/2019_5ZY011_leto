@@ -9,6 +9,6 @@ package sk.uniza.fri.worldOfFri.vynimky;
  *
  * @author janik
  */
-public class ChybaPriSpracovaniSave extends Exception {
+public class ChybaPriSpracovaniSaveException extends Exception {
     
 }
