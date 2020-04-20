@@ -45,6 +45,12 @@ Atributy
 - inteligencia
 - hp
 - charizma, vystupenie zo suboja
+Save system
+- ulozenie pozicie
+  > save nazov_pozicie
+  vytvori subor nazov_pozicie.wofsave
+- nacitanie pozicie
+ > load nazov_pozicie
 */
 
 /**
