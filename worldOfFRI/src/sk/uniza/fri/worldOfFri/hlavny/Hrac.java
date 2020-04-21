@@ -23,7 +23,6 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 import sk.uniza.fri.worldOfFri.mapa.npc.Npc;
 import sk.uniza.fri.worldOfFri.mapa.npc.Obchodnik;
 import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
-import sk.uniza.fri.worldOfFri.mapa.predmety.ZbytocnyPredmet;
 import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 
 /**
@@ -184,7 +183,7 @@ public class Hrac {
             int pocetPredmetov = pozicia.readInt();
             for (int i = 0; i < pocetPredmetov; i++) {
                 String nazovPredmetu = pozicia.readUTF();
-                this.inventar.put(nazovPredmetu, new ZbytocnyPredmet(nazovPredmetu));
+                this.inventar.put(nazovPredmetu, budova.vytvorPredmet(nazovPredmetu));
             }
         }
     }

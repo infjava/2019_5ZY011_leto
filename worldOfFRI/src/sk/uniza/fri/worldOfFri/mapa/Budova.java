@@ -13,6 +13,7 @@ import sk.uniza.fri.worldOfFri.mapa.npc.Obchodnik;
 import sk.uniza.fri.worldOfFri.mapa.npc.HostileNpc;
 import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetGranat;
 import sk.uniza.fri.worldOfFri.mapa.predmety.Dezo;
+import sk.uniza.fri.worldOfFri.mapa.predmety.IPredmet;
 import sk.uniza.fri.worldOfFri.mapa.predmety.ZbytocnyPredmet;
 import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetIsic;
 import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetPortalGun;
@@ -101,6 +102,21 @@ public class Budova {
     
     public Miestnost getMiestnost(String nazov) {
         return this.miestnosti.get(nazov);
+    }
+    
+    public IPredmet vytvorPredmet(String nazov) {
+        switch (nazov) {
+            case "granat":
+                return new PredmetGranat();
+            case "portalgun":
+                return new PredmetPortalGun();
+            case "isic":
+                return new PredmetIsic();
+            case "dezo":
+                return new Dezo();
+            default:
+                return new ZbytocnyPredmet(nazov);
+        }
     }
     
 }
