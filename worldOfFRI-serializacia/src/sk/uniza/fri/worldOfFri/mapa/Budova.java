@@ -45,6 +45,7 @@ public class Budova implements Serializable {
         vratnica.nastavVychod("zapad", terasa);
         vratnica.nastavVychod("sever", chodbaA);
         vratnica.nastavVychod("juh", chodbickaB);
+        vratnica.nastavVychod("dierou", new Miestnost("pasca"));
         
         vratnica.polozPredmet(new PredmetGranat());
         
