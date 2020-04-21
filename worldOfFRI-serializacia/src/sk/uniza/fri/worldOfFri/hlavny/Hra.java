@@ -1,5 +1,11 @@
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import sk.uniza.fri.worldOfFri.vynimky.SaveNenajdenyException;
 import sk.uniza.fri.worldOfFri.vynimky.ChybaPriSpracovaniSaveException;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
@@ -30,8 +36,8 @@ import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
  
 public class Hra  {
     private Parser parser;
-    private final Hrac hrac;
-    private final Budova budova;
+    private Hrac hrac;
+    private Budova budova;
     private final Prikazy prikazy;
     
     /**
@@ -86,8 +92,24 @@ public class Hra  {
     }
 
     public void ulozPoziciu(String nazov_pozicie) throws ChybaPriSpracovaniSaveException {
+        File suborPozicie = new File(nazov_pozicie);
+        try (ObjectOutputStream pozicia = new ObjectOutputStream(new FileOutputStream(suborPozicie + ".wofsave"))) {
+            pozicia.writeObject(this.hrac);
+            pozicia.writeObject(this.budova);
+        } catch (IOException ex) {
+            throw new ChybaPriSpracovaniSaveException();
+        }
     }
 
     public void nacitajPoziciu(String nazov_pozicie) throws ChybaPriSpracovaniSaveException, SaveNenajdenyException {
+        File suborPozicie = new File(nazov_pozicie);
+        try (ObjectInputStream pozicia = new ObjectInputStream(new FileInputStream(suborPozicie + ".wofsave"))) {
+            this.hrac = (Hrac) pozicia.readObject();
+            this.budova = (Budova) pozicia.readObject();
+        } catch (IOException ex) {
+            throw new ChybaPriSpracovaniSaveException();
+        } catch (ClassNotFoundException ex) {
+            throw new ChybaPriSpracovaniSaveException();
+        }
     }
 }

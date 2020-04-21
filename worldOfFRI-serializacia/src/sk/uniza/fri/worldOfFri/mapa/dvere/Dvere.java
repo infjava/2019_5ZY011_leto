@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.dvere;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 
@@ -12,7 +13,7 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
  *
  * @author janik
  */
-public class Dvere implements IDvere {
+public class Dvere implements IDvere, Serializable {
 
     private final Miestnost vychod;
 

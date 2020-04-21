@@ -5,13 +5,14 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.npc;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 
 /**
  *
  * @author janik
  */
-public abstract class Npc {
+public abstract class Npc implements Serializable {
 
     private final String meno;
     private Miestnost aktualnaMiestnost;

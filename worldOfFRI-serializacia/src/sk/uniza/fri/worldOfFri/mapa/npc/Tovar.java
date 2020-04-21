@@ -5,13 +5,14 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.npc;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.mapa.predmety.IPredmet;
 
 /**
  *
  * @author janik
  */
-public class Tovar {
+public class Tovar implements Serializable {
 
     private final IPredmet predmet;
     private final int cena;

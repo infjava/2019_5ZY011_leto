@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * vsetky akcie, ktore hrac v hre spravi - posun medzi miestnostami,
  * manipulacia s predmetmi, atd...
  */
-public class RiadicQuestov {
+public class RiadicQuestov implements Serializable {
 
     private final Questbook questbook;
 

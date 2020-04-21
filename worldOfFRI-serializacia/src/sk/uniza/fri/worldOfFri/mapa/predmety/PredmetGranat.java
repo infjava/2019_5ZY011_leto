@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 
@@ -12,7 +13,7 @@ import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
  *
  * @author janik
  */
-public class PredmetGranat implements IPredmet {
+public class PredmetGranat implements IPredmet, Serializable {
 
     private int pocetPouziti;
     

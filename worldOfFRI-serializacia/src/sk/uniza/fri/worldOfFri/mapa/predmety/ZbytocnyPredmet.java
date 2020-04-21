@@ -5,13 +5,14 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 
 /**
  *
  * @author janik
  */
-public class ZbytocnyPredmet implements IPredmet {
+public class ZbytocnyPredmet implements IPredmet, Serializable {
 
     private final String nazov;
 

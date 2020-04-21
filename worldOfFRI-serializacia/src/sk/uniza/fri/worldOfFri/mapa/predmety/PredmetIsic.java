@@ -5,13 +5,14 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.dvere.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.dvere.InteligentneDvere;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 
 
-public class PredmetIsic implements IPredmet {
+public class PredmetIsic implements IPredmet, Serializable {
 
     @Override
     public String getNazov() {

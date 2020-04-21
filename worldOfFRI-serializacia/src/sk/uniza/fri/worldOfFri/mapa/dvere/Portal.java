@@ -8,6 +8,7 @@ package sk.uniza.fri.worldOfFri.mapa.dvere;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
@@ -16,7 +17,7 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
  *
  * @author janik
  */
-public class Portal implements IDvere {
+public class Portal implements IDvere, Serializable {
 
     private final String nazov;
     private Portal portal;

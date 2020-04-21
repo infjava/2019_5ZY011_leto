@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.dvere;
 
+import java.io.Serializable;
 import java.util.Random;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
@@ -14,7 +15,7 @@ import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
  *
  * @author janik
  */
-public class VrazedneDvere implements IDvere {
+public class VrazedneDvere implements IDvere, Serializable {
 
     private final Miestnost vychod;
 

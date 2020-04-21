@@ -5,11 +5,12 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.dvere;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 
 
-public class InteligentneDvere implements IDvere {
+public class InteligentneDvere implements IDvere, Serializable {
 
     private final Miestnost labak;
     private boolean odomknute;

@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.vynimky.NedaSaOdistException;
 import sk.uniza.fri.worldOfFri.vynimky.NpcNespravnehoTypu;
 import sk.uniza.fri.worldOfFri.vynimky.ZamknuteDvereException;
@@ -25,7 +26,7 @@ import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
  *
  * @author janik
  */
-public class Hrac {
+public class Hrac implements Serializable {
     private Miestnost aktualnaMiestnost;
     private final HashMap<String, IPredmet> inventar;
     private final Questbook questbook;

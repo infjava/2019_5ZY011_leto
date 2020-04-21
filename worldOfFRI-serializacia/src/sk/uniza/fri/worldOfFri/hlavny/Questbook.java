@@ -5,13 +5,14 @@
  */
 package sk.uniza.fri.worldOfFri.hlavny;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author janik
  */
-public class Questbook {
+public class Questbook implements Serializable {
 
     private final ArrayList<QuestPrechadzaniaMiestnostami> questy;
     private final RiadicQuestov riadic;

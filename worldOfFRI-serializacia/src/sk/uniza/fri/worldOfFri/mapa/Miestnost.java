@@ -1,5 +1,6 @@
 package sk.uniza.fri.worldOfFri.mapa;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.mapa.dvere.Dvere;
 import sk.uniza.fri.worldOfFri.mapa.dvere.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.npc.HostileNpc;
@@ -25,7 +26,7 @@ import sk.uniza.fri.worldOfFri.vynimky.NeexistujuciVychodException;
  * @author lokalizacia: Lubomir Sadlon, Jan Janech
  * @version 2012.02.21
  */
-public class Miestnost {
+public class Miestnost implements Serializable {
 
     private String popisMiestnosti;
     private TreeMap<String, IDvere> vychody;

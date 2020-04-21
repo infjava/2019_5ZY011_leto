@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.hlavny.QuestPrechadzaniaMiestnostami;
 
@@ -13,7 +14,7 @@ import sk.uniza.fri.worldOfFri.hlavny.QuestPrechadzaniaMiestnostami;
  * Kedze nemame zatial ziadne postavy okrem hraca
  * Stary dezo, ktory bude davat quest bude predmet.
  */
-public class Dezo implements IPredmet {
+public class Dezo implements IPredmet, Serializable {
 
     private boolean dalQuest;
 

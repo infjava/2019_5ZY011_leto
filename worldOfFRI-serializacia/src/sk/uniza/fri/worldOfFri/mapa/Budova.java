@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
 import sk.uniza.fri.worldOfFri.mapa.dvere.InteligentneDvere;
 import sk.uniza.fri.worldOfFri.mapa.dvere.VrazedneDvere;
@@ -20,7 +21,7 @@ import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetPortalGun;
  *
  * @author janik
  */
-public class Budova {
+public class Budova implements Serializable {
 
     private final Miestnost startovaciaMiestnost;
 

@@ -5,6 +5,7 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.Serializable;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.dvere.Portal;
 
@@ -12,7 +13,7 @@ import sk.uniza.fri.worldOfFri.mapa.dvere.Portal;
  *
  * @author janik
  */
-public class PredmetPortalGun implements IPredmet {
+public class PredmetPortalGun implements IPredmet, Serializable {
 
     private final Portal[] portaly;
     private int aktualny;
