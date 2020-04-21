@@ -5,7 +5,11 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.dvere;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 
 /**
@@ -55,6 +59,30 @@ public class Portal implements IDvere {
 
     public String getNazov() {
         return this.nazov;
+    }
+
+    public void ulozPoziciu(DataOutputStream pozicia) throws IOException {
+        if (this.miestnost != null) {
+            pozicia.writeUTF(this.miestnost.getNazov());
+        } else {
+            pozicia.writeUTF("");
+        }
+    }
+
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException {
+        if (verzia >= 3) {
+            if (this.miestnost != null) {
+                this.miestnost.zrusVychod(this.nazov);
+            }
+            
+            String nazovMiestnosti = pozicia.readUTF();
+            if (nazovMiestnosti.isEmpty()) {
+                this.miestnost = null;
+            } else {
+                this.miestnost = budova.getMiestnost(nazovMiestnosti);
+                this.miestnost.nastavVychod(this.nazov, this);
+            }
+        }
     }
     
 }

@@ -7,6 +7,7 @@ package sk.uniza.fri.worldOfFri.mapa.predmety;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.hlavny.QuestPrechadzaniaMiestnostami;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
@@ -41,13 +42,15 @@ public class Dezo implements IPredmet {
     }
 
     @Override
-    public void ulozPoziciu(DataOutputStream pozicia) {
-        
+    public void ulozPoziciu(DataOutputStream pozicia) throws IOException {
+        pozicia.writeBoolean(this.dalQuest);
     }
 
     @Override
-    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) {
-        
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException {
+        if (verzia >= 3) {
+            this.dalQuest = pozicia.readBoolean();
+        }
     }
 
 }

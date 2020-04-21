@@ -7,6 +7,7 @@ package sk.uniza.fri.worldOfFri.mapa.predmety;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.mapa.dvere.Portal;
@@ -46,13 +47,19 @@ public class PredmetPortalGun implements IPredmet {
     }
 
     @Override
-    public void ulozPoziciu(DataOutputStream pozicia) {
-        
+    public void ulozPoziciu(DataOutputStream pozicia) throws IOException {
+        pozicia.writeInt(this.aktualny);
+        this.portaly[0].ulozPoziciu(pozicia);
+        this.portaly[1].ulozPoziciu(pozicia);
     }
 
     @Override
-    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) {
-        
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException {
+        if (verzia >= 3) {
+            this.aktualny = pozicia.readInt();
+            this.portaly[0].nacitajPoziciu(pozicia, budova, verzia);
+            this.portaly[1].nacitajPoziciu(pozicia, budova, verzia);
+        }
     }
     
 }

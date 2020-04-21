@@ -37,7 +37,7 @@ import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
  
 public class Hra  {
     private static final int TYP_SUBORU = 0xaaee1155;
-    private static final int VERZIA_SUBORU = 2;
+    private static final int VERZIA_SUBORU = 3;
     
     private Parser parser;
     private final Hrac hrac;
@@ -122,6 +122,8 @@ public class Hra  {
         } catch (FileNotFoundException ex) {
             throw new SaveNenajdenyException();
         } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
             throw new ChybaPriSpracovaniSaveException();
         }
     }
