@@ -5,8 +5,11 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.hlavny.QuestPrechadzaniaMiestnostami;
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 
 /**
  *
@@ -36,5 +39,15 @@ public class Dezo implements IPredmet {
             this.dalQuest = true;
         }
     }
-    
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) {
+        
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) {
+        
+    }
+
 }

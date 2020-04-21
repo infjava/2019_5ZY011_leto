@@ -5,7 +5,10 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.mapa.dvere.Portal;
 
 /**
@@ -40,6 +43,16 @@ public class PredmetPortalGun implements IPredmet {
         System.out.format("Otvoril si %s portal%n", this.portaly[this.aktualny].getNazov());
         
         this.aktualny = (this.aktualny + 1) % this.portaly.length;
+    }
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) {
+        
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) {
+        
     }
     
 }

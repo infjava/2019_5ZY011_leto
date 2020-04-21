@@ -5,7 +5,10 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 
 /**
  *
@@ -27,6 +30,16 @@ public class ZbytocnyPredmet implements IPredmet {
     @Override
     public void pouziSa(Hrac hrac) {
         System.out.format("Predmet %s sa neda pouzit%n", this.nazov);
+    }
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) {
+        
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) {
+        
     }
     
 }

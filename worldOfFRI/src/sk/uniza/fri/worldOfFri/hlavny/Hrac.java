@@ -168,8 +168,9 @@ public class Hrac {
         pozicia.writeInt(this.peniaze);
         pozicia.writeUTF(this.aktualnaMiestnost.getNazov());
         pozicia.writeInt(this.inventar.size());
-        for (String nazovPredmetu : this.inventar.keySet()) {
-            pozicia.writeUTF(nazovPredmetu);
+        for (IPredmet predmet : this.inventar.values()) {
+            pozicia.writeUTF(predmet.getNazov());
+            predmet.ulozPoziciu(pozicia);
         }
     }
 
@@ -183,7 +184,9 @@ public class Hrac {
             int pocetPredmetov = pozicia.readInt();
             for (int i = 0; i < pocetPredmetov; i++) {
                 String nazovPredmetu = pozicia.readUTF();
-                this.inventar.put(nazovPredmetu, budova.vytvorPredmet(nazovPredmetu));
+                final IPredmet predmet = budova.vytvorPredmet(nazovPredmetu);
+                predmet.nacitajPoziciu(pozicia, budova, verzia);
+                this.inventar.put(nazovPredmetu, predmet);
             }
         }
     }

@@ -5,7 +5,10 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 
 /**
@@ -34,6 +37,16 @@ public class PredmetGranat implements IPredmet {
         } else if (this.pocetPouziti < 11) {
             System.out.println(11 - this.pocetPouziti);
         }
+    }
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) {
+        
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) {
+        
     }
     
 }

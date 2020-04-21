@@ -46,11 +46,11 @@ public class Budova {
         
         terasa.postavNpc(new HostileNpc("vlk"));
         
-        terasa.polozPredmet(new PredmetGranat());
-        
         vratnica.nastavVychod("zapad", terasa);
         vratnica.nastavVychod("sever", chodbaA);
         vratnica.nastavVychod("juh", chodbickaB);
+        
+        vratnica.polozPredmet(new PredmetGranat());
         
         vratnica.postavNpc(new Obchodnik("bufetarka", 
             new Tovar(new ZbytocnyPredmet("bageta"), 10),

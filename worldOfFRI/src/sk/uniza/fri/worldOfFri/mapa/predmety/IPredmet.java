@@ -5,7 +5,10 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 
 /**
  *
@@ -14,4 +17,6 @@ import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 public interface IPredmet {
     String getNazov();
     void pouziSa(Hrac hrac);
+    void ulozPoziciu(DataOutputStream pozicia);
+    void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia);
 }

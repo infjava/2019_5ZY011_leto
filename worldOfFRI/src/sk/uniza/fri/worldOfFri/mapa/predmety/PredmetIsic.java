@@ -5,7 +5,10 @@
  */
 package sk.uniza.fri.worldOfFri.mapa.predmety;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
+import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.mapa.dvere.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.dvere.InteligentneDvere;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
@@ -35,6 +38,16 @@ public class PredmetIsic implements IPredmet {
         } else {
             System.out.println("Ako chces ten ISIC pouzit? Vsetky dvere okolo teba su blbe, potrebujes inteligentne");
         }
+    }
+
+    @Override
+    public void ulozPoziciu(DataOutputStream pozicia) {
+        
+    }
+
+    @Override
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) {
+        
     }
     
 }
