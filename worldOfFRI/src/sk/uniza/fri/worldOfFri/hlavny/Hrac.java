@@ -23,6 +23,7 @@ import sk.uniza.fri.worldOfFri.mapa.Miestnost;
 import sk.uniza.fri.worldOfFri.mapa.npc.Npc;
 import sk.uniza.fri.worldOfFri.mapa.npc.Obchodnik;
 import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
+import sk.uniza.fri.worldOfFri.mapa.predmety.ZbytocnyPredmet;
 import sk.uniza.fri.worldOfFri.vynimky.SmrtException;
 
 /**
@@ -167,13 +168,25 @@ public class Hrac {
         pozicia.writeInt(this.zivoty);
         pozicia.writeInt(this.peniaze);
         pozicia.writeUTF(this.aktualnaMiestnost.getNazov());
+        pozicia.writeInt(this.inventar.size());
+        for (String nazovPredmetu : this.inventar.keySet()) {
+            pozicia.writeUTF(nazovPredmetu);
+        }
     }
 
-    void nacitajPoziciu(DataInputStream pozicia, Budova budova) throws IOException {
+    void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException {
         this.zivoty = pozicia.readInt();
         this.peniaze = pozicia.readInt();
         String nazovAktualnejMiestnosti = pozicia.readUTF();
         this.aktualnaMiestnost = budova.getMiestnost(nazovAktualnejMiestnosti);
+        if (verzia >= 2) { // obsahuje inventar
+            this.inventar.clear();
+            int pocetPredmetov = pozicia.readInt();
+            for (int i = 0; i < pocetPredmetov; i++) {
+                String nazovPredmetu = pozicia.readUTF();
+                this.inventar.put(nazovPredmetu, new ZbytocnyPredmet(nazovPredmetu));
+            }
+        }
     }
     
 }
