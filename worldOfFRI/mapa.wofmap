@@ -1,0 +1,64 @@
+Miestnost terasa - hlavny vstup na fakultu
+Vychody:
+- vychod vratnica
+- zapad bufet
+Npc:
+- hostile vlk
+Predmety:
+- granat
+
+Miestnost vratnica - tu sidli p. vratnicka
+Vychody:
+- zapad terasa
+- sever chodba a
+- juh chodbicka b
+Predmety:
+- portalgun
+- isic
+- dezo
+
+Miestnost chodbicka b - mala prechodova miestnost, pozor na protiiducich
+Vychody:
+- sever vratnica
+- juh chodba b
+
+Miestnost chodba b - tmava chodba; ktovie, co sa tu skryva
+Vychody:
+- sever chodbicka b
+- zapad labak
+
+Miestnost labak - idealne miesto pre chovanie monstier
+Vychody:
+- vychod chodba b
+
+Miestnost chodba a - svetla chodba plna pocitacov a vitriniek
+Vychody:
+- juh vratnica
+- zapad ra006
+- vrazedne: hore dekanat
+- dole chodba c
+
+Miestnost dekanat - odtialto vladne kral Dekan II
+Vychody:
+- dole chodba a
+
+Miestnost ra006 - malicky labacik
+Vychody:
+- vychod chodba a
+
+Miestnost chodba c - podzemna chodba do tajnych zakuti fakulty
+Vychody:
+- hore chodba a
+- zapad bufet
+
+Miestnost bufet - rozvoniava tu vyprazany syr
+Vychody:
+- sever terasa
+- inteligentne: vychod chodba c
+Npc:
+- obchodnik bufetarka
+  * bageta 10
+  * pizza 15
+  * horalka 30
+
+Start vratnica
