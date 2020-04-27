@@ -39,6 +39,9 @@ public class Budova {
         File mapaSubor = new File(nazovSuboru);
         
         try (Scanner mapa = new Scanner(mapaSubor)) {
+            SekciaSuboru sekcia = null;
+            Miestnost miestnost = null;
+            
             while (mapa.hasNextLine()) {
                 String celyRiadok = mapa.nextLine();
                 
@@ -47,11 +50,10 @@ public class Budova {
                 }
                 
                 Scanner riadok = new Scanner(celyRiadok);
-                SekciaSuboru sekcia = null;
                 
                 switch (riadok.next()) {
                     case "Miestnost":
-                        this.newMiestnost(riadok.nextLine().strip());
+                        miestnost = this.newMiestnost(riadok.nextLine().strip());
                         break;
                     case "Vychody:":
                         sekcia = SekciaSuboru.VYCHODY;
@@ -69,6 +71,7 @@ public class Budova {
                             case NPC:
                                 break;
                             case PREDMETY:
+                                miestnost.polozPredmet(this.vytvorPredmet(riadok.nextLine().strip()));
                                 break;
                             default:
                                 throw new AssertionError();
