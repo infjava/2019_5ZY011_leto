@@ -23,7 +23,7 @@ class DefiniciaVychodu {
         this.riadok = riadok;
     }
 
-    void vytvorSa(Budova budova) {
+    void vytvorSa(Budova budova) throws MiestnostNenajdena {
         String smer = this.riadok.next();
         switch (smer) {
             case "vrazedne:":

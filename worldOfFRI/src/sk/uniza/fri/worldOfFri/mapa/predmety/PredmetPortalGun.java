@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
+import sk.uniza.fri.worldOfFri.mapa.MiestnostNenajdena;
 import sk.uniza.fri.worldOfFri.mapa.dvere.Portal;
 
 /**
@@ -54,7 +55,7 @@ public class PredmetPortalGun implements IPredmet {
     }
 
     @Override
-    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException {
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException, MiestnostNenajdena {
         if (verzia >= 3) {
             this.aktualny = pozicia.readInt();
             this.portaly[0].nacitajPoziciu(pozicia, budova, verzia);

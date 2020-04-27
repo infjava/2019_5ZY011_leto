@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
+import sk.uniza.fri.worldOfFri.mapa.MiestnostNenajdena;
 import sk.uniza.fri.worldOfFri.prikazy.Parser;
 import sk.uniza.fri.worldOfFri.prikazy.Prikaz;
 import sk.uniza.fri.worldOfFri.prikazy.Prikazy;
@@ -122,8 +123,8 @@ public class Hra  {
         } catch (FileNotFoundException ex) {
             throw new SaveNenajdenyException();
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
+            throw new ChybaPriSpracovaniSaveException();
+        } catch (MiestnostNenajdena ex) {
             throw new ChybaPriSpracovaniSaveException();
         }
     }

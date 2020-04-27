@@ -113,6 +113,8 @@ public class Budova {
             }
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Subor s mapou sa nenasiel", ex);
+        } catch (MiestnostNenajdena ex) {
+            throw new RuntimeException("Chyba suboru s mapou", ex);
         }
         
         if (this.startovaciaMiestnost == null) {
@@ -130,8 +132,12 @@ public class Budova {
         return miestnost;
     }
     
-    public Miestnost getMiestnost(String nazov) {
-        return this.miestnosti.get(nazov);
+    public Miestnost getMiestnost(String nazov) throws MiestnostNenajdena {
+        Miestnost miestnost = this.miestnosti.get(nazov);
+        if (miestnost == null) {
+            throw new MiestnostNenajdena();
+        }
+        return miestnost;
     }
     
     public IPredmet vytvorPredmet(String nazov) {

@@ -20,6 +20,7 @@ import sk.uniza.fri.worldOfFri.mapa.npc.HostileNpc;
 import sk.uniza.fri.worldOfFri.mapa.dvere.IDvere;
 import sk.uniza.fri.worldOfFri.mapa.predmety.IPredmet;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
+import sk.uniza.fri.worldOfFri.mapa.MiestnostNenajdena;
 import sk.uniza.fri.worldOfFri.mapa.npc.Npc;
 import sk.uniza.fri.worldOfFri.mapa.npc.Obchodnik;
 import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
@@ -174,7 +175,7 @@ public class Hrac {
         }
     }
 
-    void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException {
+    void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException, MiestnostNenajdena {
         this.zivoty = pozicia.readInt();
         this.peniaze = pozicia.readInt();
         String nazovAktualnejMiestnosti = pozicia.readUTF();

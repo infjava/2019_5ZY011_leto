@@ -11,6 +11,7 @@ import java.io.IOException;
 import sk.uniza.fri.worldOfFri.hlavny.Hrac;
 import sk.uniza.fri.worldOfFri.mapa.Budova;
 import sk.uniza.fri.worldOfFri.mapa.Miestnost;
+import sk.uniza.fri.worldOfFri.mapa.MiestnostNenajdena;
 
 /**
  *
@@ -69,7 +70,7 @@ public class Portal implements IDvere {
         }
     }
 
-    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException {
+    public void nacitajPoziciu(DataInputStream pozicia, Budova budova, int verzia) throws IOException, MiestnostNenajdena {
         if (verzia >= 3) {
             if (this.miestnost != null) {
                 this.miestnost.zrusVychod(this.nazov);
