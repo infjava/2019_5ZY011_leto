@@ -47,19 +47,35 @@ public class Budova {
                 }
                 
                 Scanner riadok = new Scanner(celyRiadok);
+                SekciaSuboru sekcia = null;
                 
                 switch (riadok.next()) {
                     case "Miestnost":
                         this.newMiestnost(riadok.nextLine().strip());
                         break;
                     case "Vychody:":
+                        sekcia = SekciaSuboru.VYCHODY;
                         break;
                     case "Npc:":
+                        sekcia = SekciaSuboru.NPC;
                         break;
                     case "Predmety:":
+                        sekcia = SekciaSuboru.PREDMETY;
                         break;
                     case "-":
+                        switch (sekcia) {
+                            case VYCHODY:
+                                break;
+                            case NPC:
+                                break;
+                            case PREDMETY:
+                                break;
+                            default:
+                                throw new AssertionError();
+                        }
                         break;
+
+
                     case "*":
                         break;
                     case "Start":
