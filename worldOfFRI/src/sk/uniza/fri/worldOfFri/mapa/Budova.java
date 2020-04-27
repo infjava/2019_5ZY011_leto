@@ -7,6 +7,7 @@ package sk.uniza.fri.worldOfFri.mapa;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
@@ -41,6 +42,7 @@ public class Budova {
         try (Scanner mapa = new Scanner(mapaSubor)) {
             SekciaSuboru sekcia = null;
             Miestnost miestnost = null;
+            ArrayList<DefiniciaVychodu> vychody = new ArrayList<DefiniciaVychodu>();
             
             while (mapa.hasNextLine()) {
                 String celyRiadok = mapa.nextLine();
@@ -67,6 +69,7 @@ public class Budova {
                     case "-":
                         switch (sekcia) {
                             case VYCHODY:
+                                vychody.add(new DefiniciaVychodu(miestnost, riadok));
                                 break;
                             case NPC:
                                 break;
@@ -77,8 +80,6 @@ public class Budova {
                                 throw new AssertionError();
                         }
                         break;
-
-
                     case "*":
                         break;
                     case "Start":
@@ -87,6 +88,10 @@ public class Budova {
                     default:
                         throw new AssertionError();
                 }
+            }
+            
+            for (DefiniciaVychodu vychod : vychody) {
+                vychod.vytvorSa(this);
             }
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Subor s mapou sa nenasiel", ex);
