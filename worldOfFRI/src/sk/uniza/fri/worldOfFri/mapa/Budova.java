@@ -72,6 +72,15 @@ public class Budova {
                                 vychody.add(new DefiniciaVychodu(miestnost, riadok));
                                 break;
                             case NPC:
+                                switch (riadok.next()) {
+                                    case "hostile":
+                                        miestnost.postavNpc(new HostileNpc(riadok.nextLine().strip()));
+                                        break;
+                                    case "obchodnik":
+                                        break;
+                                    default:
+                                        throw new AssertionError();
+                                }
                                 break;
                             case PREDMETY:
                                 miestnost.polozPredmet(this.vytvorPredmet(riadok.nextLine().strip()));
