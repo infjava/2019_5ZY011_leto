@@ -31,6 +31,7 @@ class DefiniciaVychodu {
                 this.miestnost.nastavVychod(smer, new VrazedneDvere(budova.getMiestnost(riadok.nextLine().strip())));
                 break;
             case "inteligentne:":
+                smer = this.riadok.next();
                 this.miestnost.nastavVychod(smer, new InteligentneDvere(budova.getMiestnost(riadok.nextLine().strip())));
                 break;
             default:
