@@ -43,6 +43,7 @@ public class Budova {
             SekciaSuboru sekcia = null;
             Miestnost miestnost = null;
             ArrayList<DefiniciaVychodu> vychody = new ArrayList<DefiniciaVychodu>();
+            DefiniciaObchodnika obchodnik = null;
             
             while (mapa.hasNextLine()) {
                 String celyRiadok = mapa.nextLine();
@@ -52,8 +53,14 @@ public class Budova {
                 }
                 
                 Scanner riadok = new Scanner(celyRiadok);
+                final String prikaz = riadok.next();
                 
-                switch (riadok.next()) {
+                if (!prikaz.equals("*") && obchodnik != null) {
+                    miestnost.postavNpc(obchodnik.vytvorSa());
+                    obchodnik = null;
+                }
+                
+                switch (prikaz) {
                     case "Miestnost":
                         miestnost = this.newMiestnost(riadok.nextLine().strip());
                         break;
@@ -77,6 +84,7 @@ public class Budova {
                                         miestnost.postavNpc(new HostileNpc(riadok.nextLine().strip()));
                                         break;
                                     case "obchodnik":
+                                        obchodnik = new DefiniciaObchodnika(riadok.nextLine().strip());
                                         break;
                                     default:
                                         throw new AssertionError();
@@ -90,6 +98,7 @@ public class Budova {
                         }
                         break;
                     case "*":
+                        obchodnik.pridajTovar(this.vytvorPredmet(riadok.next()), riadok.nextInt());
                         break;
                     case "Start":
                         this.startovaciaMiestnost = this.getMiestnost(riadok.nextLine().strip());
