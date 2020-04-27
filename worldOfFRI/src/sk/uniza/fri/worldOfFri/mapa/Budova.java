@@ -5,7 +5,10 @@
  */
 package sk.uniza.fri.worldOfFri.mapa;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Scanner;
 import sk.uniza.fri.worldOfFri.mapa.npc.Tovar;
 import sk.uniza.fri.worldOfFri.mapa.dvere.InteligentneDvere;
 import sk.uniza.fri.worldOfFri.mapa.dvere.VrazedneDvere;
@@ -24,70 +27,26 @@ import sk.uniza.fri.worldOfFri.mapa.predmety.PredmetPortalGun;
  */
 public class Budova {
 
-    private final Miestnost startovaciaMiestnost;
+    private Miestnost startovaciaMiestnost;
     private final HashMap<String, Miestnost> miestnosti;
 
     public Budova() {
         this.miestnosti = new HashMap<String, Miestnost>();
-        
-        Miestnost terasa = this.newMiestnost("terasa - hlavny vstup na fakultu");
-        Miestnost vratnica = this.newMiestnost("vratnica - tu sidli p. vratnicka");
-        Miestnost chodbickaB = this.newMiestnost("chodbicka b - mala prechodova miestnost, pozor na protiiducich");
-        Miestnost chodbaB = this.newMiestnost("chodba b - tmava chodba; ktovie, co sa tu skryva");
-        Miestnost labak = this.newMiestnost("labak - idealne miesto pre chovanie monstier");
-        Miestnost chodbaA = this.newMiestnost("chodba a - svetla chodba plna pocitacov a vitriniek");
-        Miestnost dekanat = this.newMiestnost("dekanat - odtialto vladne kral Dekan II");
-        Miestnost ra006 = this.newMiestnost("ra006 - malicky labacik");
-        Miestnost chodbaC = this.newMiestnost("chodba c - podzemna chodba do tajnych zakuti fakulty");
-        Miestnost bufet = this.newMiestnost("bufet - rozvoniava tu vyprazany syr");
-        
-        terasa.nastavVychod("vychod", vratnica);
-        terasa.nastavVychod("zapad", bufet);
-        
-        terasa.postavNpc(new HostileNpc("vlk"));
-        
-        vratnica.nastavVychod("zapad", terasa);
-        vratnica.nastavVychod("sever", chodbaA);
-        vratnica.nastavVychod("juh", chodbickaB);
-        
-        vratnica.polozPredmet(new PredmetGranat());
-        
-        vratnica.postavNpc(new Obchodnik("bufetarka", 
-            new Tovar(new ZbytocnyPredmet("bageta"), 10),
-            new Tovar(new ZbytocnyPredmet("pizza"), 15),
-            new Tovar(new ZbytocnyPredmet("horalka"), 30)
-        ));
-        
-        vratnica.polozPredmet(new PredmetPortalGun());
-        
-        vratnica.polozPredmet(new PredmetIsic());
-        
-        vratnica.polozPredmet(new Dezo());
-        
-        chodbickaB.nastavVychod("sever", vratnica);
-        chodbickaB.nastavVychod("juh", chodbaB);
-        
-        chodbaB.nastavVychod("sever", chodbickaB);
-        chodbaB.nastavVychod("zapad", labak);
-        
-        labak.nastavVychod("vychod", chodbaB);
-        
-        chodbaA.nastavVychod("juh", vratnica);
-        chodbaA.nastavVychod("zapad", ra006);
-        chodbaA.nastavVychod("hore", new VrazedneDvere(dekanat));
-        chodbaA.nastavVychod("dole", chodbaC);
-        
-        dekanat.nastavVychod("dole", chodbaA);
-        
-        ra006.nastavVychod("vychod", chodbaA);
-        
-        chodbaC.nastavVychod("hore", chodbaA);
-        chodbaC.nastavVychod("zapad", bufet);
-        
-        bufet.nastavVychod("sever", terasa);
-        bufet.nastavVychod("vychod", new InteligentneDvere(chodbaC));
+        this.nacitajMapu("mapa.wofmap");
+    }
 
-        this.startovaciaMiestnost = vratnica;
+    private void nacitajMapu(String nazovSuboru) {
+        File mapaSubor = new File(nazovSuboru);
+        
+        try (Scanner mapa = new Scanner(mapaSubor)) {
+            
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException("Subor s mapou sa nenasiel", ex);
+        }
+        
+        if (this.startovaciaMiestnost == null) {
+            throw new RuntimeException("Mapa neobsahuje ziadnu startovaciu miestnost");
+        }
     }
 
     public Miestnost getStartovaciaMiestnost() {
