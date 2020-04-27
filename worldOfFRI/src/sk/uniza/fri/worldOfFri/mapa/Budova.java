@@ -39,7 +39,36 @@ public class Budova {
         File mapaSubor = new File(nazovSuboru);
         
         try (Scanner mapa = new Scanner(mapaSubor)) {
-            
+            while (mapa.hasNextLine()) {
+                String celyRiadok = mapa.nextLine();
+                
+                if (celyRiadok.isBlank()) {
+                    continue;
+                }
+                
+                Scanner riadok = new Scanner(celyRiadok);
+                
+                switch (riadok.next()) {
+                    case "Miestnost":
+                        this.newMiestnost(riadok.nextLine().strip());
+                        break;
+                    case "Vychody:":
+                        break;
+                    case "Npc:":
+                        break;
+                    case "Predmety:":
+                        break;
+                    case "-":
+                        break;
+                    case "*":
+                        break;
+                    case "Start":
+                        this.startovaciaMiestnost = this.getMiestnost(riadok.nextLine().strip());
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+            }
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Subor s mapou sa nenasiel", ex);
         }
