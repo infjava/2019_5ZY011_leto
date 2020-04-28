@@ -5,6 +5,7 @@
  */
 package fri.zobrazovacprvocisel;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -19,8 +20,16 @@ public class ZobrazovacPrvocisel {
     public static void main(String[] args) {
         // TODO code application logic here
         Prvocisla p = new Prvocisla(10, 100);
+        ZobrazovacPrvocisel.<Integer>vypisVsetko(p);
         
-        for (Integer prvocislo : p) {
+        ArrayList<String> ar = new ArrayList<String>();
+        ar.add("Tu");
+        ar.add("som");
+        ZobrazovacPrvocisel.<String>vypisVsetko(ar);
+    }
+    
+    public static <E> void vypisVsetko(Iterable<E> prvkyNaVypis) {
+        for (E prvocislo : prvkyNaVypis) {
             System.out.println(prvocislo);
         }
     }
