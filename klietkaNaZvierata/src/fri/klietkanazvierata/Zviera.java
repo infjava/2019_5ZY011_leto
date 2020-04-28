@@ -9,6 +9,6 @@ package fri.klietkanazvierata;
  *
  * @author janik
  */
-class Zviera {
-    
+abstract class Zviera {
+    public abstract void zjedz(IPotrava<Zviera> potrava);
 }

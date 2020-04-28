@@ -9,7 +9,7 @@ package fri.klietkanazvierata;
  *
  * @author janik
  */
-class Klietka<E> {
+class Klietka<E extends Zviera> {
 
     private E zviera;
 
@@ -29,7 +29,7 @@ class Klietka<E> {
     }
 
     void vlozPotravu(IPotrava<E> potrava) {
-        System.out.println("Zviera " + this.zviera + " zjedlo potravu " + potrava);
+        this.zviera.zjedz((IPotrava<Zviera>) potrava);
     }
     
 }

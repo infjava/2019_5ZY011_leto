@@ -15,6 +15,11 @@ public class Mys extends Zviera implements IPotrava<Lev> {
     public String toString() {
         return "Mys";
     }
+    
+    @Override
+    public void zjedz(IPotrava<Zviera> potrava) {
+        System.out.println("Myska schrumkala " + potrava);
+    }
 
     
 }
