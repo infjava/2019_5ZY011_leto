@@ -15,7 +15,10 @@ public class KlietkaNaZvierata {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Klietka klietka = new Klietka();
+        System.out.println(klietka);
+        klietka.vloz(new Lev());
+        System.out.println(klietka);
     }
     
 }
