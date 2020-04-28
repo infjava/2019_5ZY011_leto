@@ -19,6 +19,11 @@ public class KlietkaNaZvierata {
         System.out.println(klietka);
         klietka.vloz(new Lev());
         System.out.println(klietka);
+        
+        Klietka klietkaDruha = new Klietka();
+        System.out.println(klietkaDruha);
+        klietkaDruha.vloz(new Mys());
+        System.out.println(klietkaDruha);
     }
     
 }

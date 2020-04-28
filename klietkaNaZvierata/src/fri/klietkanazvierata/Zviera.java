@@ -9,11 +9,6 @@ package fri.klietkanazvierata;
  *
  * @author janik
  */
-public class Lev extends Zviera {
-
-    @Override
-    public String toString() {
-        return "Lev";
-    }
+class Zviera {
     
 }
