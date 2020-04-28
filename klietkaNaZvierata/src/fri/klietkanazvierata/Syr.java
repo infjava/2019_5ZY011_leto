@@ -9,7 +9,7 @@ package fri.klietkanazvierata;
  *
  * @author janik
  */
-public class Syr implements IPotrava {
+public class Syr implements IPotrava<Mys> {
 
     @Override
     public String toString() {

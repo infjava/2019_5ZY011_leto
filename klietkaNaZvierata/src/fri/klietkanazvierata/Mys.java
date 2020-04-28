@@ -9,7 +9,7 @@ package fri.klietkanazvierata;
  *
  * @author janik
  */
-public class Mys extends Zviera implements IPotrava {
+public class Mys extends Zviera implements IPotrava<Lev> {
 
     @Override
     public String toString() {
