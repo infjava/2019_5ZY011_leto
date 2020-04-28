@@ -20,16 +20,24 @@ public class ZobrazovacPrvocisel {
     public static void main(String[] args) {
         // TODO code application logic here
         Prvocisla p = new Prvocisla(10, 100);
-        ZobrazovacPrvocisel.vypisVsetko(p);
+        //ZobrazovacPrvocisel.vypisVsetko(p);
+        ZobrazovacPrvocisel.vypisVsetkoWildcard(p);
         
         ArrayList<String> ar = new ArrayList<String>();
         ar.add("Tu");
         ar.add("som");
-        ZobrazovacPrvocisel.vypisVsetko(ar);
+        //ZobrazovacPrvocisel.vypisVsetko(ar);
+        ZobrazovacPrvocisel.vypisVsetkoWildcard(ar);
     }
     
     public static <E> void vypisVsetko(Iterable<E> prvkyNaVypis) {
         for (E prvocislo : prvkyNaVypis) {
+            System.out.println(prvocislo);
+        }
+    }
+    
+    public static void vypisVsetkoWildcard(Iterable<?> prvkyNaVypis) {
+        for (Object prvocislo : prvkyNaVypis) {
             System.out.println(prvocislo);
         }
     }
