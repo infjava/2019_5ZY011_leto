@@ -20,12 +20,12 @@ public class ZobrazovacPrvocisel {
     public static void main(String[] args) {
         // TODO code application logic here
         Prvocisla p = new Prvocisla(10, 100);
-        ZobrazovacPrvocisel.<Integer>vypisVsetko(p);
+        ZobrazovacPrvocisel.vypisVsetko(p);
         
         ArrayList<String> ar = new ArrayList<String>();
         ar.add("Tu");
         ar.add("som");
-        ZobrazovacPrvocisel.<String>vypisVsetko(ar);
+        ZobrazovacPrvocisel.vypisVsetko(ar);
     }
     
     public static <E> void vypisVsetko(Iterable<E> prvkyNaVypis) {
