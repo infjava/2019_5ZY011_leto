@@ -17,7 +17,7 @@ public class PrvocislaIterator implements Iterator<Integer> {
     private final int koniec;
 
     PrvocislaIterator(int start, int koniec) {
-        this.aktualny = start;
+        this.aktualny = this.najdiPrvocislo(start);
         this.koniec = koniec;
         
     }
@@ -30,8 +30,29 @@ public class PrvocislaIterator implements Iterator<Integer> {
     @Override
     public Integer next() {
         int aktualny = this.aktualny;
-        this.aktualny++;
+        this.aktualny = this.najdiPrvocislo(aktualny + 1);
         return aktualny;
+    }
+
+    private int najdiPrvocislo(int start) {
+        int cislo = start;
+        
+        while (!this.jePrvocislo(cislo)) {
+            cislo++;
+        }
+        
+        return cislo;
+    }
+
+    private boolean jePrvocislo(int cislo) {
+        final double max = Math.sqrt(cislo);
+        
+        for (int testovanyDelitel = 2; testovanyDelitel <= max; testovanyDelitel++) {
+            if (cislo % testovanyDelitel == 0)
+                return false;
+        }
+        
+        return true;
     }
     
 }
