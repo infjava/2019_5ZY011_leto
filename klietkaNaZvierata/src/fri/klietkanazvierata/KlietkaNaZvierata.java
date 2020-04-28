@@ -18,11 +18,13 @@ public class KlietkaNaZvierata {
         Klietka<Lev> klietkaNaLeva = new Klietka<Lev>();
         System.out.println(klietkaNaLeva);
         klietkaNaLeva.vloz(new Lev());
+        klietkaNaLeva.vlozPotravu(new Mys());
         System.out.println(klietkaNaLeva);
         
         Klietka<Mys> klietkaNaMys = new Klietka<Mys>();
         System.out.println(klietkaNaMys);
         klietkaNaMys.vloz(new Mys());
+        klietkaNaMys.vlozPotravu(new Syr());
         System.out.println(klietkaNaMys);
     }
     

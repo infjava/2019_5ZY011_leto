@@ -27,5 +27,9 @@ class Klietka<E> {
             return "Klietka{prazdna}";
         return "Klietka{" + "Obsah:" + this.zviera + '}';
     }
+
+    void vlozPotravu(IPotrava potrava) {
+        System.out.println("Zviera " + this.zviera + " zjedlo potravu " + potrava);
+    }
     
 }
