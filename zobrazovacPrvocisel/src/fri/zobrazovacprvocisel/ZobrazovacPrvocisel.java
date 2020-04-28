@@ -20,11 +20,11 @@ public class ZobrazovacPrvocisel {
         // TODO code application logic here
         Prvocisla p = new Prvocisla(10, 100);
         
-        /*Iterator<Integer> it = p.iterator();
+        Iterator<Integer> it = p.iterator();
         while (it.hasNext()) {
             Integer prvocislo = it.next();
             System.out.println(prvocislo);
-        }*/
+        }
         
         /*for (Integer prvocislo : p) {
             System.out.println(prvocislo);

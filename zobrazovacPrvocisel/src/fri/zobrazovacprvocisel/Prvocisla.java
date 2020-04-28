@@ -5,14 +5,25 @@
  */
 package fri.zobrazovacprvocisel;
 
+import java.util.Iterator;
+
 /**
  *
  * @author janik
  */
 class Prvocisla {
 
+    private final int start;
+    private final int koniec;
+
     Prvocisla(int start, int koniec) {
+        this.start = start;
+        this.koniec = koniec;
         
+    }
+
+    Iterator<Integer> iterator() {
+        return new PrvocislaIterator(this.start, this.koniec);
     }
     
 }
