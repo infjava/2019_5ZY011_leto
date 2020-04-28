@@ -11,7 +11,7 @@ import java.util.Iterator;
  *
  * @author janik
  */
-class Prvocisla {
+class Prvocisla implements Iterable<Integer> {
 
     private final int start;
     private final int koniec;
@@ -22,7 +22,8 @@ class Prvocisla {
         
     }
 
-    Iterator<Integer> iterator() {
+    @Override
+    public Iterator<Integer> iterator() {
         return new PrvocislaIterator(this.start, this.koniec);
     }
     
