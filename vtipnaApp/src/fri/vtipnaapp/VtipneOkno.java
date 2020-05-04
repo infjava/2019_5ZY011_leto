@@ -48,6 +48,10 @@ class VtipneOkno {
         this.tlacitko2 = new JButton("nie");
         this.tlacitko2.addActionListener(new KlikanieNaNie());
         tlacidla.add(this.tlacitko2);
+        
+        this.tlacitko1.addMouseListener(new Premiestnovac(this.tlacitko1, this.tlacitko2, 1));
+        this.tlacitko2.addMouseListener(new Premiestnovac(this.tlacitko1, this.tlacitko2, 2));
+        
         this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();
     }
