@@ -23,43 +23,6 @@ import javax.swing.WindowConstants;
  * @author janik
  */
 class VtipneOkno {
-
-    private class KlikanieNaNie implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel. :(");
-            System.exit(0);
-        }
-
-    }
-    
-    private class Premiestnovac extends MouseAdapter {
-
-        private final int nieTlacitko;
-
-        Premiestnovac(int nieTlacitko) {
-            this.nieTlacitko = nieTlacitko;
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent me) {
-            switch (this.nieTlacitko) {
-                case 1:
-                    VtipneOkno.this.tlacitko1.setText("nie");
-                    VtipneOkno.this.tlacitko2.setText("áno");
-                    break;
-                case 2:
-                    VtipneOkno.this.tlacitko1.setText("áno");
-                    VtipneOkno.this.tlacitko2.setText("nie");
-                    break;
-                default:
-                    throw new AssertionError();
-            }
-        }
-
-    }
-
     private final JFrame okno;
     private final JButton tlacitko1;
     private final JButton tlacitko2;
@@ -82,8 +45,36 @@ class VtipneOkno {
     
     private JButton vytvorTlacitko(String text, int cisloNieTlacitka) {
         JButton tlacitko = new JButton(text);
-        tlacitko.addActionListener(new KlikanieNaNie());
-        tlacitko.addMouseListener(new Premiestnovac(cisloNieTlacitka));
+        
+        tlacitko.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel. :(");
+                    System.exit(0);
+                }
+            }
+        );
+        
+        tlacitko.addMouseListener(
+            new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent me) {
+                    switch (cisloNieTlacitka) {
+                        case 1:
+                            VtipneOkno.this.tlacitko1.setText("nie");
+                            VtipneOkno.this.tlacitko2.setText("áno");
+                            break;
+                        case 2:
+                            VtipneOkno.this.tlacitko1.setText("áno");
+                            VtipneOkno.this.tlacitko2.setText("nie");
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+                }
+            }
+        );
         return tlacitko;
     }
 
