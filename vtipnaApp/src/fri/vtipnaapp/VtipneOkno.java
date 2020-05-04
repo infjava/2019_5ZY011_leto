@@ -34,17 +34,34 @@ class VtipneOkno {
         this.okno.add(new JLabel("Chceš dostať A zo skúšky?"), BorderLayout.NORTH);
         JPanel tlacidla = new JPanel();
         tlacidla.setLayout(new GridLayout());
-        this.tlacitko1 = this.vytvorTlacitko("áno", 1);
+        this.tlacitko1 = this.vytvorTlacitko(1);
         tlacidla.add(this.tlacitko1);
-        this.tlacitko2 = this.vytvorTlacitko("nie", 2);
+        this.tlacitko2 = this.vytvorTlacitko(2);
         tlacidla.add(this.tlacitko2);
         
+        VtipneOkno.this.setTlacitko2Nie();
         this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();
     }
     
-    private JButton vytvorTlacitko(String text, int cisloNieTlacitka) {
-        JButton tlacitko = new JButton(text);
+    private void setTlacitko1Nie() {
+        this.tlacitko1.setText("nie");
+        this.tlacitko2.setText("áno");
+        this.tlacitko1.setFocusable(true);
+        this.tlacitko2.setFocusable(false);
+        this.tlacitko1.grabFocus();
+    }
+    
+    private void setTlacitko2Nie() {
+        this.tlacitko1.setText("áno");
+        this.tlacitko2.setText("nie");
+        this.tlacitko1.setFocusable(false);
+        this.tlacitko2.setFocusable(true);
+        this.tlacitko2.grabFocus();
+    }
+    
+    private JButton vytvorTlacitko(int cisloNieTlacitka) {
+        JButton tlacitko = new JButton();
         
         tlacitko.addActionListener((ActionEvent ae) -> {
             JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel. :(");
@@ -57,12 +74,10 @@ class VtipneOkno {
                 public void mouseEntered(MouseEvent me) {
                     switch (cisloNieTlacitka) {
                         case 1:
-                            VtipneOkno.this.tlacitko1.setText("nie");
-                            VtipneOkno.this.tlacitko2.setText("áno");
+                            VtipneOkno.this.setTlacitko1Nie();
                             break;
                         case 2:
-                            VtipneOkno.this.tlacitko1.setText("áno");
-                            VtipneOkno.this.tlacitko2.setText("nie");
+                            VtipneOkno.this.setTlacitko2Nie();
                             break;
                         default:
                             throw new AssertionError();
