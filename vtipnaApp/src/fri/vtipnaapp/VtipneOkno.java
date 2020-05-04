@@ -46,15 +46,10 @@ class VtipneOkno {
     private JButton vytvorTlacitko(String text, int cisloNieTlacitka) {
         JButton tlacitko = new JButton(text);
         
-        tlacitko.addActionListener(
-            new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                    JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel. :(");
-                    System.exit(0);
-                }
-            }
-        );
+        tlacitko.addActionListener((ActionEvent ae) -> {
+            JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel. :(");
+            System.exit(0);
+        });
         
         tlacitko.addMouseListener(
             new MouseAdapter() {
