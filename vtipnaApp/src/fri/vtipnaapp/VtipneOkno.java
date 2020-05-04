@@ -32,6 +32,8 @@ class VtipneOkno {
     }
 
     private final JFrame okno;
+    private final JButton tlacitko1;
+    private final JButton tlacitko2;
 
     public VtipneOkno() {
         this.okno = new JFrame("Otázka");
@@ -40,10 +42,12 @@ class VtipneOkno {
         this.okno.add(new JLabel("Chceš dostať A zo skúšky?"), BorderLayout.NORTH);
         JPanel tlacidla = new JPanel();
         tlacidla.setLayout(new GridLayout());
-        tlacidla.add(new JButton("áno"));
-        final JButton nie = new JButton("nie");
-        nie.addActionListener(new KlikanieNaNie());
-        tlacidla.add(nie);
+        this.tlacitko1 = new JButton("áno");
+        this.tlacitko1.addActionListener(new KlikanieNaNie());
+        tlacidla.add(this.tlacitko1);
+        this.tlacitko2 = new JButton("nie");
+        this.tlacitko2.addActionListener(new KlikanieNaNie());
+        tlacidla.add(this.tlacitko2);
         this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();
     }
