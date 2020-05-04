@@ -23,6 +23,7 @@ import javax.swing.WindowConstants;
  * @author janik
  */
 class VtipneOkno {
+
     private class KlikanieNaNie implements ActionListener {
 
         @Override
@@ -70,20 +71,21 @@ class VtipneOkno {
         this.okno.add(new JLabel("Chceš dostať A zo skúšky?"), BorderLayout.NORTH);
         JPanel tlacidla = new JPanel();
         tlacidla.setLayout(new GridLayout());
-        this.tlacitko1 = new JButton("áno");
-        this.tlacitko1.addActionListener(new KlikanieNaNie());
+        this.tlacitko1 = this.vytvorTlacitko("áno", 1);
         tlacidla.add(this.tlacitko1);
-        this.tlacitko2 = new JButton("nie");
-        this.tlacitko2.addActionListener(new KlikanieNaNie());
+        this.tlacitko2 = this.vytvorTlacitko("nie", 2);
         tlacidla.add(this.tlacitko2);
-        
-        this.tlacitko1.addMouseListener(new Premiestnovac(1));
-        this.tlacitko2.addMouseListener(new Premiestnovac(2));
         
         this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();
     }
     
+    private JButton vytvorTlacitko(String text, int cisloNieTlacitka) {
+        JButton tlacitko = new JButton(text);
+        tlacitko.addActionListener(new KlikanieNaNie());
+        tlacitko.addMouseListener(new Premiestnovac(cisloNieTlacitka));
+        return tlacitko;
+    }
 
     void zobraz() {
         this.okno.setVisible(true);
