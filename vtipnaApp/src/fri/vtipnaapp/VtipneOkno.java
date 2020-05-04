@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +29,32 @@ class VtipneOkno {
         public void actionPerformed(ActionEvent ae) {
             JOptionPane.showMessageDialog(null, "To som si teda o tebe nemyslel. :(");
             System.exit(0);
+        }
+
+    }
+    
+    private class Premiestnovac extends MouseAdapter {
+
+        private final int nieTlacitko;
+
+        Premiestnovac(int nieTlacitko) {
+            this.nieTlacitko = nieTlacitko;
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent me) {
+            switch (this.nieTlacitko) {
+                case 1:
+                    VtipneOkno.this.tlacitko1.setText("nie");
+                    VtipneOkno.this.tlacitko2.setText("áno");
+                    break;
+                case 2:
+                    VtipneOkno.this.tlacitko1.setText("áno");
+                    VtipneOkno.this.tlacitko2.setText("nie");
+                    break;
+                default:
+                    throw new AssertionError();
+            }
         }
 
     }
@@ -49,8 +77,8 @@ class VtipneOkno {
         this.tlacitko2.addActionListener(new KlikanieNaNie());
         tlacidla.add(this.tlacitko2);
         
-        this.tlacitko1.addMouseListener(new Premiestnovac(this.tlacitko1, this.tlacitko2, 1));
-        this.tlacitko2.addMouseListener(new Premiestnovac(this.tlacitko1, this.tlacitko2, 2));
+        this.tlacitko1.addMouseListener(new Premiestnovac(1));
+        this.tlacitko2.addMouseListener(new Premiestnovac(2));
         
         this.okno.add(tlacidla, BorderLayout.CENTER);
         this.okno.pack();
