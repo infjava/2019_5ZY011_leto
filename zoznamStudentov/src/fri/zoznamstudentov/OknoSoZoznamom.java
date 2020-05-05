@@ -92,6 +92,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
 
         btnVymaz.setText("Vymaž");
         btnVymaz.setEnabled(false);
+        btnVymaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVymazActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnVymaz);
 
         getContentPane().add(jPanel1);
@@ -134,6 +139,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
             this.btnVymaz.setEnabled(true);
         }
     }//GEN-LAST:event_lstZoznamStudentovValueChanged
+
+    private void btnVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVymazActionPerformed
+        int oznacenyStudent = this.lstZoznamStudentov.getSelectedIndex();
+        this.zoznamStudentov.removeElementAt(oznacenyStudent);
+    }//GEN-LAST:event_btnVymazActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOprav;
