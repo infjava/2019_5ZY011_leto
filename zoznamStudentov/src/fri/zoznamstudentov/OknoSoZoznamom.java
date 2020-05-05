@@ -39,8 +39,10 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         lstZoznamStudentov = new javax.swing.JList<>();
         javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+        javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
         txtMeno = new javax.swing.JTextField();
         txtPriezvisko = new javax.swing.JTextField();
+        javax.swing.JPanel jPanel3 = new javax.swing.JPanel();
         btnVloz = new javax.swing.JButton();
         btnOprav = new javax.swing.JButton();
         btnVymaz = new javax.swing.JButton();
@@ -63,7 +65,9 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
 
-        jPanel1.setLayout(new java.awt.GridLayout(0, 1));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setLayout(new java.awt.GridLayout(0, 1));
 
         txtMeno.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -73,7 +77,7 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
                 studentFocusLost(evt);
             }
         });
-        jPanel1.add(txtMeno);
+        jPanel2.add(txtMeno);
 
         txtPriezvisko.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -83,7 +87,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
                 studentFocusLost(evt);
             }
         });
-        jPanel1.add(txtPriezvisko);
+        jPanel2.add(txtPriezvisko);
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.NORTH);
+
+        jPanel3.setLayout(new java.awt.GridLayout(0, 1));
 
         btnVloz.setText("Vlož");
         btnVloz.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +99,7 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
                 btnVlozActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVloz);
+        jPanel3.add(btnVloz);
 
         btnOprav.setText("Oprav");
         btnOprav.setEnabled(false);
@@ -100,7 +108,7 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
                 btnOpravActionPerformed(evt);
             }
         });
-        jPanel1.add(btnOprav);
+        jPanel3.add(btnOprav);
 
         btnVymaz.setText("Vymaž");
         btnVymaz.setEnabled(false);
@@ -109,7 +117,9 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
                 btnVymazActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVymaz);
+        jPanel3.add(btnVymaz);
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(jPanel1);
 
