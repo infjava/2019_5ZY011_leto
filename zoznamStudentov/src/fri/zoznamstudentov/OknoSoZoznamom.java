@@ -6,6 +6,7 @@
 package fri.zoznamstudentov;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,8 +75,21 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVlozActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVlozActionPerformed
+        if (this.txtMeno.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Nezadal si meno");
+            this.txtMeno.grabFocus();
+            return;
+        }
+        if (this.txtPriezvisko.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Nezadal si priezvisko");
+            this.txtPriezvisko.grabFocus();
+            return;
+        }
         Student novyStudent = new Student(this.txtMeno.getText(), this.txtPriezvisko.getText());
         this.zoznamStudentov.addElement(novyStudent);
+        this.txtMeno.setText("");
+        this.txtPriezvisko.setText("");
+        this.txtMeno.grabFocus();
     }//GEN-LAST:event_btnVlozActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
