@@ -88,6 +88,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
 
         btnOprav.setText("Oprav");
         btnOprav.setEnabled(false);
+        btnOprav.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpravActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnOprav);
 
         btnVymaz.setText("Vymaž");
@@ -131,12 +136,18 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
     }//GEN-LAST:event_studentFocusLost
 
     private void lstZoznamStudentovValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstZoznamStudentovValueChanged
-        if (this.lstZoznamStudentov.getSelectedIndex() == -1) {
+        final int oznacenyStudent = this.lstZoznamStudentov.getSelectedIndex();
+        if (oznacenyStudent == -1) {
             this.btnOprav.setEnabled(false);
             this.btnVymaz.setEnabled(false);
+            this.txtMeno.setText("");
+            this.txtPriezvisko.setText("");
         } else {
             this.btnOprav.setEnabled(true);
             this.btnVymaz.setEnabled(true);
+            Student oznaceny = this.zoznamStudentov.getElementAt(oznacenyStudent);
+            this.txtMeno.setText(oznaceny.getMeno());
+            this.txtPriezvisko.setText(oznaceny.getPriezvisko());
         }
     }//GEN-LAST:event_lstZoznamStudentovValueChanged
 
@@ -144,6 +155,23 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         int oznacenyStudent = this.lstZoznamStudentov.getSelectedIndex();
         this.zoznamStudentov.removeElementAt(oznacenyStudent);
     }//GEN-LAST:event_btnVymazActionPerformed
+
+    private void btnOpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpravActionPerformed
+        int oznacenyStudent = this.lstZoznamStudentov.getSelectedIndex();
+        
+        if (this.txtMeno.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Nezadal si meno");
+            this.txtMeno.grabFocus();
+            return;
+        }
+        if (this.txtPriezvisko.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Nezadal si priezvisko");
+            this.txtPriezvisko.grabFocus();
+            return;
+        }
+        Student novyStudent = new Student(this.txtMeno.getText(), this.txtPriezvisko.getText());
+        this.zoznamStudentov.setElementAt(novyStudent, oznacenyStudent);
+    }//GEN-LAST:event_btnOpravActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOprav;
