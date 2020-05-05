@@ -23,6 +23,7 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         this.zoznamStudentov = new DefaultListModel<Student>();
         
         this.initComponents();
+        this.txtMeno.grabFocus();
     }
 
     /**
@@ -128,7 +129,12 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVlozActionPerformed
 
     private void studentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentFocusGained
-        this.getRootPane().setDefaultButton(this.btnVloz);
+        final int oznacenyStudent = this.lstZoznamStudentov.getSelectedIndex();
+        if (oznacenyStudent == -1) {
+            this.getRootPane().setDefaultButton(this.btnVloz);
+        } else {
+            this.getRootPane().setDefaultButton(this.btnOprav);
+        }
     }//GEN-LAST:event_studentFocusGained
 
     private void studentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentFocusLost
