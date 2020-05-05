@@ -47,6 +47,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
         lstZoznamStudentov.setModel(this.zoznamStudentov);
+        lstZoznamStudentov.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstZoznamStudentovValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstZoznamStudentov);
 
         getContentPane().add(jScrollPane1);
@@ -82,9 +87,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         jPanel1.add(btnVloz);
 
         btnOprav.setText("Oprav");
+        btnOprav.setEnabled(false);
         jPanel1.add(btnOprav);
 
         btnVymaz.setText("Vymaž");
+        btnVymaz.setEnabled(false);
         jPanel1.add(btnVymaz);
 
         getContentPane().add(jPanel1);
@@ -117,6 +124,16 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
     private void studentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentFocusLost
         this.getRootPane().setDefaultButton(null);
     }//GEN-LAST:event_studentFocusLost
+
+    private void lstZoznamStudentovValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstZoznamStudentovValueChanged
+        if (this.lstZoznamStudentov.getSelectedIndex() == -1) {
+            this.btnOprav.setEnabled(false);
+            this.btnVymaz.setEnabled(false);
+        } else {
+            this.btnOprav.setEnabled(true);
+            this.btnVymaz.setEnabled(true);
+        }
+    }//GEN-LAST:event_lstZoznamStudentovValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOprav;

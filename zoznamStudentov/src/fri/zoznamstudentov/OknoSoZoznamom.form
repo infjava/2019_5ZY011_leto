@@ -40,6 +40,9 @@
               <Connection code="this.zoznamStudentov" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstZoznamStudentovValueChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Student&gt;"/>
           </AuxValues>
@@ -80,11 +83,13 @@
         <Component class="javax.swing.JButton" name="btnOprav">
           <Properties>
             <Property name="text" type="java.lang.String" value="Oprav"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnVymaz">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vyma&#x17e;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
