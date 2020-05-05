@@ -55,6 +55,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         jPanel1.add(txtPriezvisko);
 
         btnVloz.setText("Vlož");
+        btnVloz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVlozActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnVloz);
 
         btnOprav.setText("Oprav");
@@ -67,6 +72,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVlozActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVlozActionPerformed
+        Student novyStudent = new Student(this.txtMeno.getText(), this.txtPriezvisko.getText());
+        this.zoznamStudentov.addElement(novyStudent);
+    }//GEN-LAST:event_btnVlozActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOprav;
