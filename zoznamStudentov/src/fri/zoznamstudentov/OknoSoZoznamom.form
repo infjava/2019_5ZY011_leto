@@ -58,8 +58,16 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtMeno">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="studentFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="studentFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPriezvisko">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="studentFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="studentFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVloz">
           <Properties>

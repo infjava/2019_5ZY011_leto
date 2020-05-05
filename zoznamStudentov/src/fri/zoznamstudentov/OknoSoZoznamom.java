@@ -52,7 +52,25 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
 
         jPanel1.setLayout(new java.awt.GridLayout(0, 1));
+
+        txtMeno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studentFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                studentFocusLost(evt);
+            }
+        });
         jPanel1.add(txtMeno);
+
+        txtPriezvisko.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studentFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                studentFocusLost(evt);
+            }
+        });
         jPanel1.add(txtPriezvisko);
 
         btnVloz.setText("Vlož");
@@ -91,6 +109,14 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         this.txtPriezvisko.setText("");
         this.txtMeno.grabFocus();
     }//GEN-LAST:event_btnVlozActionPerformed
+
+    private void studentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentFocusGained
+        this.getRootPane().setDefaultButton(this.btnVloz);
+    }//GEN-LAST:event_studentFocusGained
+
+    private void studentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentFocusLost
+        this.getRootPane().setDefaultButton(null);
+    }//GEN-LAST:event_studentFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOprav;
