@@ -5,16 +5,22 @@
  */
 package fri.zoznamstudentov;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author janik
  */
 public class OknoSoZoznamom extends javax.swing.JFrame {
 
+    private final DefaultListModel<Student> zoznamStudentov;
+
     /**
      * Creates new form OknoSoZoznamom
      */
     public OknoSoZoznamom() {
+        this.zoznamStudentov = new DefaultListModel<Student>();
+        
         this.initComponents();
     }
 
@@ -39,11 +45,7 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
-        lstZoznamStudentov.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        lstZoznamStudentov.setModel(this.zoznamStudentov);
         jScrollPane1.setViewportView(lstZoznamStudentov);
 
         getContentPane().add(jScrollPane1);
@@ -70,7 +72,7 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
     private javax.swing.JButton btnOprav;
     private javax.swing.JButton btnVloz;
     private javax.swing.JButton btnVymaz;
-    private javax.swing.JList<String> lstZoznamStudentov;
+    private javax.swing.JList<Student> lstZoznamStudentov;
     private javax.swing.JTextField txtMeno;
     private javax.swing.JTextField txtPriezvisko;
     // End of variables declaration//GEN-END:variables
