@@ -27,43 +27,39 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
+        lstZoznamStudentov = new javax.swing.JList<>();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+        txtMeno = new javax.swing.JTextField();
+        txtPriezvisko = new javax.swing.JTextField();
+        btnVloz = new javax.swing.JButton();
+        btnOprav = new javax.swing.JButton();
+        btnVymaz = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        lstZoznamStudentov.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(lstZoznamStudentov);
 
         getContentPane().add(jScrollPane1);
 
         jPanel1.setLayout(new java.awt.GridLayout(0, 1));
+        jPanel1.add(txtMeno);
+        jPanel1.add(txtPriezvisko);
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1);
+        btnVloz.setText("Vlož");
+        jPanel1.add(btnVloz);
 
-        jTextField2.setText("jTextField2");
-        jPanel1.add(jTextField2);
+        btnOprav.setText("Oprav");
+        jPanel1.add(btnOprav);
 
-        jButton3.setText("jButton3");
-        jPanel1.add(jButton3);
-
-        jButton4.setText("jButton4");
-        jPanel1.add(jButton4);
-
-        jButton5.setText("jButton5");
-        jPanel1.add(jButton5);
+        btnVymaz.setText("Vymaž");
+        jPanel1.add(btnVymaz);
 
         getContentPane().add(jPanel1);
 
@@ -71,13 +67,11 @@ public class OknoSoZoznamom extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton btnOprav;
+    private javax.swing.JButton btnVloz;
+    private javax.swing.JButton btnVymaz;
+    private javax.swing.JList<String> lstZoznamStudentov;
+    private javax.swing.JTextField txtMeno;
+    private javax.swing.JTextField txtPriezvisko;
     // End of variables declaration//GEN-END:variables
 }
